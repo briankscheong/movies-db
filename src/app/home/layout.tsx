@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '@/components/navbar';
 import NavTabs from '@/components/navtabs';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {

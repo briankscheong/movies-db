@@ -31,9 +31,6 @@ interface Genre {
 }
 
 async function getMovies() {
-    // const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-    // await sleep(1500)
-
     const backend_url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL;
 
     try {
@@ -100,8 +97,6 @@ export default function Trending() {
     return (
         <div>
             <div className="justify-center items-center text-center">
-                {/* <h1 className="text-2xl font-bold text-gray-100 mb-3">Trending Movies</h1> */}
-                {/* <p className="text-base text-gray-700 my-1">Just for you!</p> */}
             </div>
             {/* <Suspense fallback={ <Loading /> }> */}
             { loading ? <Loading /> : 
