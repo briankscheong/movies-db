@@ -34,6 +34,9 @@ const config: Config = {
       animation: {
         typing: "typing 3s steps(20), blink .8s infinite"
       }
+    },
+    palette: {
+      mode: "dark"
     }
   },
   plugins: [],
