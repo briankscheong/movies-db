@@ -2,7 +2,7 @@
 import "@/app/globals.css"
 import Image from "next/image";
 import { useState, useEffect, Suspense } from "react";
-import Loading from '@/app/dashboard/loading';
+import Loading from '@/app/home/trending/loading';
 import { Modal, StyledBackdrop, ModalContent, TriggerButton } from "@/components/modal";
 
 interface MovieResult {
@@ -31,11 +31,10 @@ interface Genre {
 }
 
 async function getMovies() {
-    const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-    await sleep(1500)
+    const backend_url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL;
 
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movies`)
+        const res = await fetch(`${backend_url}/movies`)
         if (!res.ok) {
             console.error("Failed to retrieve movies");
             return [];
@@ -66,7 +65,7 @@ async function getMovieStreamingOption(id: number, title: string, setMovieStream
     }
 }
 
-export default function Home() {
+export default function Trending() {
     const [movies, setMovies] = useState<any[]>([]);
     const [activeMovieId, setActiveMovieId] = useState<number | null>(null); // Track active movie ID
     const [movieStreamingOption, setMovieStreamingOption] = useState<any>({});
@@ -98,27 +97,31 @@ export default function Home() {
     return (
         <div>
             <div className="justify-center items-center text-center">
-                <h1 className="text-2xl font-bold text-gray-900 mb-3">Trending Movies</h1>
-                {/* <p className="text-base text-gray-700 my-1">Just for you!</p> */}
             </div>
             {/* <Suspense fallback={ <Loading /> }> */}
             { loading ? <Loading /> : 
                 <Suspense fallback={<p className="text-4xl text-center justify-center">Loading...</p>}>
-                    <div className="columns-sm items-center justify-center">
+                    <div className="columns-sm items-center justify-center space-y-2">
                         {
                             movies.map((movie, index) => (
                                 <div key={index}>
                                     <TriggerButton type="button" onClick={() => handleMovieClick(movie)}>
                                         <div 
-                                            className="p-8 bg-gradient-to-r from-gray-50 to-gray-100 shadow-lg rounded-lg space-y-4 my-2 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" 
+                                            className="p-8 bg-gradient-to-r from-blue-900 to-cyan-700 shadow-lg rounded-lg space-y-4 my-2 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" 
                                         >
-                                            <Image src={movie.poster_path} alt="poster image" className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
-                                            <p className="text-2xl font-extrabold text-gray-900 tracking-wide hover:text-blue-600 transition duration-300">{movie.title}</p>
+                                            <Image src={movie.poster_path} alt="poster image" width={ 400 } height={ 500 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
+                                            <p className="text-2xl font-extrabold text-white tracking-wide hover:text-cyan-100 transition duration-300">{movie.title}</p>
+                                            <p className="text-base font-bold text-white">Overview: <span className="font-normal text-white">{movie.overview}</span></p>
+                                            <p className="text-base font-bold text-white">Popularity: <span className="font-normal text-white">{movie.popularity}</span></p>
+                                            <p className="text-base font-bold text-white">Release Date: <span className="font-normal text-white">{movie.release_date}</span></p>
+                                            <p className="text-base font-bold text-white">Vote Average: <span className="font-normal text-white">{movie.vote_average} / 10</span></p>
+                                            <p className="text-base font-bold text-white">Vote Count: <span className="font-normal text-white">{movie.vote_count}</span></p>        
+                                            {/* <p className="text-2xl font-extrabold text-gray-900 tracking-wide hover:text-blue-800 transition duration-300">{movie.title}</p>
                                             <p className="text-base font-bold text-gray-800">Overview: <span className="font-normal text-gray-600">{movie.overview}</span></p>
                                             <p className="text-base font-bold text-gray-800">Popularity: <span className="font-normal text-gray-600">{movie.popularity}</span></p>
                                             <p className="text-base font-bold text-gray-800">Release Date: <span className="font-normal text-gray-600">{movie.release_date}</span></p>
                                             <p className="text-base font-bold text-gray-800">Vote Average: <span className="font-normal text-gray-600">{movie.vote_average} / 10</span></p>
-                                            <p className="text-base font-bold text-gray-800">Vote Count: <span className="font-normal text-gray-600">{movie.vote_count}</span></p>        
+                                            <p className="text-base font-bold text-gray-800">Vote Count: <span className="font-normal text-gray-600">{movie.vote_count}</span></p>         */}
                                         </div>
                                     </TriggerButton>
                                     <Modal
@@ -134,7 +137,6 @@ export default function Home() {
                                             overflowY: 'auto',  // Enable vertical scrolling when content overflows
                                             padding: '20px',
                                             borderRadius: '12px',
-                                            // Custom scrollbar hide styling
                                             '&::-webkit-scrollbar': {
                                                 display: 'none',  // Hide scrollbar for webkit browsers
                                             },
@@ -143,11 +145,18 @@ export default function Home() {
                                             'WebkitOverflowScrolling': 'touch',  // Smooth scrolling for touch devices
                                             }}
                                         >
+                                            <div className="flex justify-end">
+                                                <button onClick={handleClose} className="px-3 py-1 rounded-sm hover:bg-gray-50 font-bold text-lg text-gray-700">
+                                                    x
+                                                </button>
+                                            </div>
                                             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '5px' }}>
                                                 <Image 
                                                     src={movie.poster_path}
                                                     alt={`${movieStreamingOption.title} Poster`}
-                                                    style={{ width: '100%', maxWidth: '300px', borderRadius: '8px' }}>
+                                                    style={{ width: '100%', maxWidth: '300px', borderRadius: '8px' }}
+                                                    width={ 400 }
+                                                    height={ 500 }>
                                                 </Image>
                                             </div>
 

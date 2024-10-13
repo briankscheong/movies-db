@@ -26,6 +26,8 @@ export const blue = {
   500: '#007FFF',
   600: '#0072E5',
   700: '#0066CC',
+  800: '#003377',
+  900: '#002266',
 };
 
 export const grey = {
@@ -74,7 +76,7 @@ export const ModalContent = styled('div')(
     border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
     box-shadow: 0 3px 8px
       ${theme.palette.mode === 'dark' ? 'rgb(0 0 0 / 0.2)' : 'rgb(0 0 0 / 0.1)'};
-    padding: 24px;
+    // padding: 24px;
     color: ${theme.palette.mode === 'dark' ? grey[50] : grey[900]};
 
     & .modal-title {
@@ -99,22 +101,22 @@ export const TriggerButton = styled('button')(
     font-weight: 600;
     font-size: 0.875rem;
     line-height: 1.5;
-    padding: 8px 16px;
+    // padding: 8px 16px;
     border-radius: 8px;
     transition: all 150ms ease;
     cursor: pointer;
-    background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+    background: ${theme.palette.mode === 'dark' ? grey[900] : blue[800]};
     // border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
     // color: ${theme.palette.mode === 'dark' ? grey[200] : grey[900]};
     // box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 
     &:hover {
-      background: ${theme.palette.mode === 'dark' ? grey[800] : grey[50]};
+      background: ${theme.palette.mode === 'dark' ? grey[800] : '#004488'};
       border-color: ${theme.palette.mode === 'dark' ? grey[600] : grey[300]};
     }
 
     &:active {
-      background: ${theme.palette.mode === 'dark' ? grey[700] : grey[100]};
+      background: ${theme.palette.mode === 'dark' ? grey[700] : '#003366'};
     }
 
     &:focus-visible {
