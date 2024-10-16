@@ -2,8 +2,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { redirect } from 'next/navigation'
-import AppRouterInstance from 'next/types';
 import { cn } from "@/lib/utils";
 
 // Usage:
