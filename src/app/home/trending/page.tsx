@@ -66,6 +66,13 @@ async function getMovieStreamingOption(id: number, title: string, setMovieStream
     }
 }
 
+function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+
 export default function Trending() {
     const [movies, setMovies] = useState<any[]>([]);
     const [activeMovieId, setActiveMovieId] = useState<number | null>(null); // Track active movie ID
@@ -114,9 +121,9 @@ export default function Trending() {
                                             </div>
                                             <p className="text-2xl font-extrabold text-cyan-500 tracking-wide hover:text-cyan-300 transition duration-300">{movie.title}</p>
                                             <p className="text-base font-bold text-teal-500 mb-1">Overview: <span className="font-normal text-white">{movie.overview}</span></p>
-                                            <p className="text-base font-bold text-teal-500">Popularity: <span className="font-normal text-white">{movie.popularity}</span></p>
-                                            <p className="text-base font-bold text-teal-500">Release Date: <span className="font-normal text-white">{movie.release_date}</span></p>
-                                            <p className="text-base font-bold text-teal-500">Vote Average: <span className="font-normal text-white">{movie.vote_average} / 10</span></p>
+                                            <p className="text-base font-bold text-teal-500">Popularity: <span className="font-normal text-white">{movie.popularity.toFixed(2)}</span></p>
+                                            <p className="text-base font-bold text-teal-500">Release Date: <span className="font-normal text-white">{formatDate(movie.release_date)}</span></p>
+                                            <p className="text-base font-bold text-teal-500">Vote Average: <span className="font-normal text-white">{movie.vote_average.toFixed(2)} / 10</span></p>
                                             <p className="text-base font-bold text-teal-500">Vote Count: <span className="font-normal text-white">{movie.vote_count}</span></p>        
                                         </div>
                                     </TriggerButton>
