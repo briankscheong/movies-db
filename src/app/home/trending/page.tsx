@@ -108,7 +108,6 @@ export default function Trending() {
                             movies.map((movie, index) => (
                                 <div key={index}>
                                     <TriggerButton type="button" onClick={() => handleMovieClick(movie)}>
-                                        {/* <div className="items-center justify-center p-8 bg-gradient-to-r from-blue-900 to-cyan-700 shadow-lg rounded-lg space-y-4 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" > */}
                                         <div className="items-center justify-center p-8 bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg rounded-lg space-y-6 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" >
                                             <div className="flex items-center justify-center">
                                                 <Image src={movie.poster_path} alt="poster image" width={ 400 } height={ 800 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
@@ -119,12 +118,6 @@ export default function Trending() {
                                             <p className="text-base font-bold text-white">Release Date: <span className="font-normal text-white">{movie.release_date}</span></p>
                                             <p className="text-base font-bold text-white">Vote Average: <span className="font-normal text-white">{movie.vote_average} / 10</span></p>
                                             <p className="text-base font-bold text-white">Vote Count: <span className="font-normal text-white">{movie.vote_count}</span></p>        
-                                            {/* <p className="text-2xl font-extrabold text-gray-900 tracking-wide hover:text-blue-800 transition duration-300">{movie.title}</p>
-                                            <p className="text-base font-bold text-gray-800">Overview: <span className="font-normal text-gray-600">{movie.overview}</span></p>
-                                            <p className="text-base font-bold text-gray-800">Popularity: <span className="font-normal text-gray-600">{movie.popularity}</span></p>
-                                            <p className="text-base font-bold text-gray-800">Release Date: <span className="font-normal text-gray-600">{movie.release_date}</span></p>
-                                            <p className="text-base font-bold text-gray-800">Vote Average: <span className="font-normal text-gray-600">{movie.vote_average} / 10</span></p>
-                                            <p className="text-base font-bold text-gray-800">Vote Count: <span className="font-normal text-gray-600">{movie.vote_count}</span></p>         */}
                                         </div>
                                     </TriggerButton>
                                     <Modal
