@@ -2,7 +2,8 @@
 import "@/app/globals.css"
 import Image from "next/image";
 import { useState, useEffect, Suspense } from "react";
-import Loading from '@/app/home/trending/loading';
+import Loading from '@/components/loading';
+import { waitSeconds } from '@/lib/utils';
 import { Modal, StyledBackdrop, ModalContent, TriggerButton } from "@/components/modal";
 
 interface MovieResult {
@@ -75,7 +76,8 @@ export default function Trending() {
 
     useEffect(() => {
         setLoading(true);
-        getMovies()
+        waitSeconds(1000)
+            .then(() =>getMovies())
             .then(moviesResult => {
                 console.log(moviesResult["results"])
                 return moviesResult["results"]
@@ -101,27 +103,21 @@ export default function Trending() {
             {/* <Suspense fallback={ <Loading /> }> */}
             { loading ? <Loading /> : 
                 <Suspense fallback={<p className="text-4xl text-center justify-center">Loading...</p>}>
-                    <div className="columns-sm items-center justify-center space-y-2">
+                    <div className="columns-sm space-y-4">
                         {
                             movies.map((movie, index) => (
                                 <div key={index}>
                                     <TriggerButton type="button" onClick={() => handleMovieClick(movie)}>
-                                        <div 
-                                            className="p-8 bg-gradient-to-r from-blue-900 to-cyan-700 shadow-lg rounded-lg space-y-4 my-2 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" 
-                                        >
-                                            <Image src={movie.poster_path} alt="poster image" width={ 400 } height={ 500 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
-                                            <p className="text-2xl font-extrabold text-white tracking-wide hover:text-cyan-100 transition duration-300">{movie.title}</p>
-                                            <p className="text-base font-bold text-white">Overview: <span className="font-normal text-white">{movie.overview}</span></p>
+                                        <div className="items-center justify-center p-8 bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg rounded-lg space-y-6 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" >
+                                            <div className="flex items-center justify-center">
+                                                <Image src={movie.poster_path} alt="poster image" width={ 400 } height={ 800 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
+                                            </div>
+                                            <p className="text-2xl font-extrabold text-cyan-600 tracking-wide hover:text-cyan-300 transition duration-300">{movie.title}</p>
+                                            <p className="text-base font-bold text-white mb-1">Overview: <span className="font-normal text-white">{movie.overview}</span></p>
                                             <p className="text-base font-bold text-white">Popularity: <span className="font-normal text-white">{movie.popularity}</span></p>
                                             <p className="text-base font-bold text-white">Release Date: <span className="font-normal text-white">{movie.release_date}</span></p>
                                             <p className="text-base font-bold text-white">Vote Average: <span className="font-normal text-white">{movie.vote_average} / 10</span></p>
                                             <p className="text-base font-bold text-white">Vote Count: <span className="font-normal text-white">{movie.vote_count}</span></p>        
-                                            {/* <p className="text-2xl font-extrabold text-gray-900 tracking-wide hover:text-blue-800 transition duration-300">{movie.title}</p>
-                                            <p className="text-base font-bold text-gray-800">Overview: <span className="font-normal text-gray-600">{movie.overview}</span></p>
-                                            <p className="text-base font-bold text-gray-800">Popularity: <span className="font-normal text-gray-600">{movie.popularity}</span></p>
-                                            <p className="text-base font-bold text-gray-800">Release Date: <span className="font-normal text-gray-600">{movie.release_date}</span></p>
-                                            <p className="text-base font-bold text-gray-800">Vote Average: <span className="font-normal text-gray-600">{movie.vote_average} / 10</span></p>
-                                            <p className="text-base font-bold text-gray-800">Vote Count: <span className="font-normal text-gray-600">{movie.vote_count}</span></p>         */}
                                         </div>
                                     </TriggerButton>
                                     <Modal
@@ -146,7 +142,7 @@ export default function Trending() {
                                             }}
                                         >
                                             <div className="flex justify-end">
-                                                <button onClick={handleClose} className="px-3 py-1 rounded-sm hover:bg-gray-50 font-bold text-lg text-gray-700">
+                                                <button onClick={handleClose} className="px-4 py-2 rounded-sm bg-gray-50 hover:bg-gray-100 font-bold text-lg text-gray-700">
                                                     x
                                                 </button>
                                             </div>
@@ -156,7 +152,7 @@ export default function Trending() {
                                                     alt={`${movieStreamingOption.title} Poster`}
                                                     style={{ width: '100%', maxWidth: '300px', borderRadius: '8px' }}
                                                     width={ 400 }
-                                                    height={ 500 }>
+                                                    height={ 800 }>
                                                 </Image>
                                             </div>
 
