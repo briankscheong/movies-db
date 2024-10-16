@@ -2,7 +2,7 @@ import React from 'react';
 import NavTabs from '@/components/navtabs';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const tabs = ["Trending", "Contact Us", "Settings"] //, "Search", "About Us", "Contact Us", "Settings"]
+  const tabs = ["Trending", "All Movies", "Contact Us"] //, "Search", "About Us", "Contact Us", "Settings"]
   return (
     <div>
         <div className="flex flex-col">
