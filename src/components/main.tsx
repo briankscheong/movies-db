@@ -9,7 +9,7 @@ export default function Main() {
     const router = useRouter();
 
     return (
-        <div className="w-screen text-center p-10 items-center justify-center">
+        <div className="w-screen text-center py-10 px-5 items-center justify-center">
             <GibberishText text="Movies.db" className="text-4xl font-bold text-gray-100 font-mono" />
             <br />
             <div className="flex flex-row justify-center items-center">
@@ -26,7 +26,7 @@ export default function Main() {
                     onComplete={() =>{}}>
                 </TypingText>
             </div>
-            <button className="ease-in animate-pulse px-4 py-2 text-white border hover:animate-none hover:border-2 hover:shadow active:shadow-xl active:bg-blue-900 rounded-lg text-sm" type="button" onClick={() => router.push('/home/trending')}>Get Started</button>
+            <button className="ease-in px-4 py-2 text-white border hover:border-2 hover:shadow active:shadow-xl active:bg-blue-900 rounded-lg text-sm" type="button" onClick={() => router.push('/home/trending')}>Get Started</button>
         </div>
     );
 }
