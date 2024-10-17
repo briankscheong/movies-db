@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         background: "var(--background)",
-        foreground: "var(--foreground)",
+        foreground: "hsl(var(--foreground))",
       },
       keyframes: {
         typing: {
@@ -33,11 +33,17 @@ const config: Config = {
       },
       animation: {
         typing: "typing 3s steps(20), blink .8s infinite"
+      },
+      extend: {
+        transitionProperty: {
+          'height': 'height',
+          'spacing': 'margin, padding',
+        }
       }
     },
     palette: {
       mode: "dark"
-    }
+    },
   },
   plugins: [],
 };
