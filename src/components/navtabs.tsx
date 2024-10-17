@@ -31,7 +31,7 @@ export default function NavTabs({ tabs, homeTitle, homeRoute }: { tabs: string[]
   const router = useRouter();
 
   return (
-    <div className="flex w-full gap-4 bg-black/50 p-6 items-center">
+    <div className="overflow-auto flex w-full gap-4 bg-black/50 p-6 items-center">
       <div className="flex items-start">
         <button onClick={() => router.push(homeRoute)}>
           <p className="text-left text-white hover:font-bold">{homeTitle}</p>
