@@ -163,11 +163,11 @@ export default function Popular() {
                                                 <Image src={movie.poster_path} alt="poster image" width={ 400 } height={ 800 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
                                             </div>
                                             <p className="text-2xl font-extrabold text-cyan-500 tracking-wide hover:text-cyan-300 transition duration-300">{movie.title}</p>
-                                            <p className="text-base font-bold text-teal-500 mb-1">Overview: <span className="font-normal text-white">{movie.overview}</span></p>
-                                            <p className="text-base font-bold text-teal-500">Popularity: <span className="font-normal text-white">{movie.popularity.toFixed(2)}</span></p>
-                                            <p className="text-base font-bold text-teal-500">Release Date: <span className="font-normal text-white">{formatDate(movie.release_date)}</span></p>
-                                            <p className="text-base font-bold text-teal-500">Vote Average: <span className="font-normal text-white">{movie.vote_average.toFixed(2)} / 10</span></p>
-                                            <p className="text-base font-bold text-teal-500">Vote Count: <span className="font-normal text-white">{movie.vote_count}</span></p>        
+                                            <p className="text-base font-bold text-teal-500 mb-1">Overview: <span className="font-normal text-white">{movie.overview ? movie.overview : "N/A"}</span></p>
+                                            <p className="text-base font-bold text-teal-500">Popularity: <span className="font-normal text-white">{movie.popularity ? movie.popularity.toFixed(2) : "N/A"}</span></p>
+                                            <p className="text-base font-bold text-teal-500">Release Date: <span className="font-normal text-white">{movie.release_date ? formatDate(movie.release_date) : "N/A"}</span></p>
+                                            <p className="text-base font-bold text-teal-500">Vote Average: <span className="font-normal text-white">{movie.vote_average ? `${movie.vote_average.toFixed(2)} / 10` : "N/A"}</span></p>
+                                            <p className="text-base font-bold text-teal-500">Vote Count: <span className="font-normal text-white">{movie.vote_count ? movie.vote_count : "N/A"}</span></p>        
                                         </div>
                                     </TriggerButton>
                                     <Modal
