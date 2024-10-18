@@ -29,10 +29,15 @@ const config: Config = {
           "100%": {
             borderColor: "white"
           }
-        }
+        },
+        meteor: {
+          "0%": { transform: "translateY(-20%) translateX(-50%)" },
+          "100%": { transform: "translateY(300%) translateX(-50%)" },
+        },
       },
       animation: {
-        typing: "typing 3s steps(20), blink .8s infinite"
+        typing: "typing 3s steps(20), blink .8s infinite",
+        meteor: "meteor var(--duration) var(--delay) ease-in-out infinite",
       },
       extend: {
         transitionProperty: {

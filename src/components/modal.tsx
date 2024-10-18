@@ -56,7 +56,7 @@ export const StyledBackdrop = styled(Backdrop)`
   z-index: -1;
   position: fixed;
   inset: 0;
-  background-color: rgb(225 225 225 / 0.85);
+  background-color: rgb(20 20 20 / 0.85);
   -webkit-tap-highlight-color: transparent;
   `;
 //   background-color: rgb(225 225 225 / 0.25);
@@ -71,13 +71,14 @@ export const ModalContent = styled('div')(
     flex-direction: column;
     gap: 8px;
     overflow: hidden;
-    background-color: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+    // background-color: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+    background-color: ${theme.palette.mode === 'dark' ? grey[900] : '#000015'};
     border-radius: 8px;
     border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
     box-shadow: 0 3px 8px
       ${theme.palette.mode === 'dark' ? 'rgb(0 0 0 / 0.2)' : 'rgb(0 0 0 / 0.1)'};
-    // padding: 24px;
-    color: ${theme.palette.mode === 'dark' ? grey[50] : grey[900]};
+    // color: ${theme.palette.mode === 'dark' ? grey[50] : grey[900]};
+    color: ${theme.palette.mode === 'dark' ? grey[50] : '#fff'};
 
     & .modal-title {
       margin: 0;

@@ -48,7 +48,7 @@ async function getMovies() {
     const backend_url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL;
 
     try {
-        const res = await fetch(`${backend_url}/movies/trending`)
+        const res = await fetch(`${backend_url}/movies/upcoming`)
         if (!res.ok) {
             console.error("Failed to retrieve movies");
             return [];

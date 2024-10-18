@@ -44,11 +44,11 @@ interface Genre {
     name: string
 }
 
-async function getMovies() {
+async function getTopRatedMovies() {
     const backend_url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL;
 
     try {
-        const res = await fetch(`${backend_url}/movies/trending`)
+        const res = await fetch(`${backend_url}/movies/top-rated`)
         if (!res.ok) {
             console.error("Failed to retrieve movies");
             return [];
@@ -69,7 +69,7 @@ function formatDate(dateString: string): string {
     return date.toLocaleDateString('en-US', options);
 }
 
-export default function Trending() {
+export default function TopRated() {
     const [movies, setMovies] = useState<any[]>([]);
     const [activeMovieId, setActiveMovieId] = useState<number | null>(null); // Track active movie ID
     const [movieStreamingOption, setMovieStreamingOption] = useState<any>({});
@@ -125,7 +125,7 @@ export default function Trending() {
     useEffect(() => {
         setLoading(true);
         waitSeconds(1000)
-            .then(() =>getMovies())
+            .then(() =>getTopRatedMovies())
             .then(moviesResult => {
                 console.log("Movie results: ")
                 console.log(moviesResult["results"])

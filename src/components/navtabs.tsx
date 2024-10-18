@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import DropdownNav from "@/components/dropDownNav";
 
 // Usage:
 /**
@@ -22,25 +23,41 @@ interface TabProps {
   router: ReturnType<typeof useRouter>;
 }
 
-function redirectPage (page: string, router: ReturnType<typeof useRouter>) {
+function redirectPage(page: string, router: ReturnType<typeof useRouter>) {
   router.push("/home/" + page.replace(" ", "-").toLowerCase());
 }
 
 export default function NavTabs({ tabs, homeTitle, homeRoute }: { tabs: string[], homeTitle: string, homeRoute: string }) {
   const [selected, setSelected] = useState<string>(tabs[0]);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+    };
+    
+    handleResize(); // Set initial state
+    window.addEventListener("resize", handleResize);
+    
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="overflow-auto flex w-full gap-4 bg-black/50 p-6 items-center">
       <div className="flex items-start">
         <button onClick={() => router.push(homeRoute)}>
-          <p className="text-left text-white hover:font-bold">{homeTitle}</p>
+          <p className="text-left text-white hover:font-bold p-2">{homeTitle}</p>
         </button>
       </div>
       <div className="w-full flex justify-end items-center">
-        {tabs.map((tab) => (
-          <Tab text={tab} selected={selected === tab} setSelected={setSelected} router={router} key={tab} />
-        ))}
+        {isMobile ? (
+          <DropdownNav tabs={tabs} selected={selected} setSelected={setSelected} />
+        ) : (
+          tabs.map((tab) => (
+            <Tab text={tab} selected={selected === tab} setSelected={setSelected} router={router} key={tab} />
+          ))
+        )}
       </div>
     </div>
   );
