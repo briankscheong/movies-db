@@ -13,7 +13,7 @@ const DropdownNav: React.FC<DropdownNavProps> = ({ tabs, selected, setSelected }
 
   const handleSelect = (tab: string) => {
     setSelected(tab);
-    router.push("/home/" + tab.replace(" ", "-").toLowerCase());
+    router.push("/movies/" + tab.replace(" ", "-").toLowerCase());
   };
 
   return (
