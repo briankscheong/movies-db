@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // output: "export", // Ensures static export
-    // basePath: '/movies-db', // Sets the base path for the app
-    // assetPrefix: '/movies-db/', // Prefixes assets (CSS, JS, etc.)
     env: {
       NEXT_PUBLIC_NODEJS_BACKEND_URL: process.env.NODEJS_BACKEND_URL, // Use NEXT_PUBLIC_ prefix for frontend environment variables
     },
