@@ -5,6 +5,7 @@ import { useState, useEffect, Suspense } from "react";
 import Loading from '@/components/loading';
 import { waitSeconds } from '@/lib/utils';
 import { Modal, StyledBackdrop, ModalContent, TriggerButton } from "@/components/modal";
+import { useSearchParams } from 'next/navigation';
 
 interface MovieResult {
     name: string;
@@ -75,6 +76,8 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
     const [movieStreamingOption, setMovieStreamingOption] = useState<any>({});
     const [movieVideo, setMovieVideo] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(true); 
+    const searchParams = useSearchParams();
+    const queryParam = searchParams.get('query');
     const handleOpen = (movieId: number) => setActiveMovieId(movieId);
     const handleClose = () => setActiveMovieId(null);
 
@@ -84,7 +87,6 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
             if (!res.ok) {
                 console.error(`Failed to retrieve streaming option for movie ${title}`);
             }
-            console.log(res);
             const movieStreamingOption = await res.json();
             console.log("Movie streaming option: ");
             console.log(movieStreamingOption);
@@ -157,12 +159,13 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
                     <div className="columns-sm space-y-4">
                         {
                             movies.map((movie, index) => (
-                                 movie.poster_path ? (
+                                movie.poster_path ? (
+                                    !queryParam?.trim().replaceAll(" ", "") || movie.title.toLowerCase().trim().replaceAll(" ", "").includes(queryParam.toLowerCase().trim().replaceAll(" ", "")) ? (
                                         <div key={index}>
                                             <TriggerButton type="button" onClick={() => handleMovieClick(movie)}>
                                                 <div className="items-center justify-center p-8 bg-gradient-to-r from-gray-950 to-gray-900 shadow-lg rounded-lg space-y-6 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" >
                                                     <div className="flex items-center justify-center">
-                                                        <Image src={movie.poster_path} alt="" width={ 400 } height={ 800 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
+                                                        <Image src={movie.poster_path} alt="poster image" width={ 400 } height={ 800 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
                                                     </div>
                                                     <p className="text-2xl font-extrabold text-cyan-500 tracking-wide hover:text-cyan-300 transition duration-300">{movie.title}</p>
                                                     <p className="text-base font-bold text-teal-500 mb-1">Overview: <span className="font-normal text-white">{movie.overview ? movie.overview : "N/A"}</span></p>
@@ -181,7 +184,7 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
                                             >
                                                 <ModalContent sx={{ 
                                                     width: 600,
-                                                    maxHeight: '95vh', // Ensure the modal height is limited to 80% of the viewport height
+                                                    maxHeight: '95vh', // Ensure the modal height is limited to 95% of the viewport height
                                                     overflowY: 'auto',  // Enable vertical scrolling when content overflows
                                                     padding: '20px',
                                                     borderRadius: '12px',
@@ -257,7 +260,6 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
                                                         movieVideo ? (
                                                             <div className="flex justify-center items-center">
                                                                 <iframe
-                                                                // src={`https://www.youtube.com/embed/SrswRTLrrOw`}
                                                                 src={`https://www.youtube.com/embed/${movieVideo}`}
                                                                 width={500}
                                                                 height={290}
@@ -311,8 +313,8 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
                                             
                                         </div>
                                     ) : (<></>)
-                                )
-                            )
+                                ) : (<></>)
+                            ))
                         }
                     </div>
                 </Suspense>

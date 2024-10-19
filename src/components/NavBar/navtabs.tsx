@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import DropdownNav from "@/components/NavBar/DropDownNav";
 import Image from "next/image";
 import movieLogo from "@/app/movies/icon.png";
+import Search from "@/components/search";
 
 // Usage:
 /**
@@ -29,14 +30,17 @@ function redirectPage(page: string, router: ReturnType<typeof useRouter>) {
   router.push("/movies/" + page.replace(" ", "-").toLowerCase());
 }
 
-export default function NavTabs({ tabs, homeRoute }: { tabs: string[], homeRoute: string }) {
+export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute: string}) {
+// export default function NavTabs({searchParams, urlPath, tabs, homeRoute }: { searchParams?: {query?: string; page?: string;}, urlPath: string, tabs: string[], homeRoute: string}) {
+  // const query = searchParams?.query || '';
+  // const currentPage = Number(searchParams?.page) || 1;
   const [selected, setSelected] = useState<string>(tabs[0]);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+      setIsMobile(window.innerWidth <= 768); 
     };
     
     handleResize(); // Set initial state
@@ -58,6 +62,7 @@ export default function NavTabs({ tabs, homeRoute }: { tabs: string[], homeRoute
           />
         </button>
       </div>
+      <Search placeholder="search movie..." mobile={isMobile}></Search>
       <div className="w-full flex justify-end items-center">
         {isMobile ? (
           <DropdownNav tabs={tabs} selected={selected} setSelected={setSelected} />
