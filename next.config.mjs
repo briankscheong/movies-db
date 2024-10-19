@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "export", // Ensures static export
+    // output: "export", // Ensures static export
     basePath: '/movies-db', // Sets the base path for the app
     assetPrefix: '/movies-db/', // Prefixes assets (CSS, JS, etc.)
     env: {
