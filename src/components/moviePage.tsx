@@ -139,7 +139,7 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
                 setMovies(results)
                 setLoading(false);
             });
-    }, []);
+    }, [urlPath]);
 
     const handleMovieClick = (movie: MovieResult) => {
         getMovieStreamingOption(movie.id, movie.title);
