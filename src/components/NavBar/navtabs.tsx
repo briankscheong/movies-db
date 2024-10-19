@@ -29,7 +29,7 @@ function redirectPage(page: string, router: ReturnType<typeof useRouter>) {
   router.push("/movies/" + page.replace(" ", "-").toLowerCase());
 }
 
-export default function NavTabs({ tabs, homeTitle, homeRoute }: { tabs: string[], homeTitle: string, homeRoute: string }) {
+export default function NavTabs({ tabs, homeRoute }: { tabs: string[], homeRoute: string }) {
   const [selected, setSelected] = useState<string>(tabs[0]);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const router = useRouter();
@@ -56,7 +56,6 @@ export default function NavTabs({ tabs, homeTitle, homeRoute }: { tabs: string[]
             alt="Logo"
             className="min-w-10 min-h-10"
           />
-          {/* <p className="text-left text-white hover:font-bold p-2 flex">{homeTitle}</p> */}
         </button>
       </div>
       <div className="w-full flex justify-end items-center">
