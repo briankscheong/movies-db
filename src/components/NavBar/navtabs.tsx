@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import DropdownNav from "@/components/dropDownNav";
+import DropdownNav from "@/components/NavBar/DropDownNav";
+import Image from "next/image";
+import movieLogo from "@/app/movies/icon.png";
 
 // Usage:
 /**
@@ -24,7 +26,7 @@ interface TabProps {
 }
 
 function redirectPage(page: string, router: ReturnType<typeof useRouter>) {
-  router.push("/home/" + page.replace(" ", "-").toLowerCase());
+  router.push("/movies/" + page.replace(" ", "-").toLowerCase());
 }
 
 export default function NavTabs({ tabs, homeTitle, homeRoute }: { tabs: string[], homeTitle: string, homeRoute: string }) {
@@ -46,8 +48,15 @@ export default function NavTabs({ tabs, homeTitle, homeRoute }: { tabs: string[]
   return (
     <div className="overflow-auto flex w-full gap-4 bg-black/50 p-6 items-center">
       <div className="flex items-start">
-        <button onClick={() => router.push(homeRoute)}>
-          <p className="text-left text-white hover:font-bold p-2">{homeTitle}</p>
+        <button onClick={() => router.push(homeRoute)} className="px-2 shadow-lg">
+          <Image
+            src={movieLogo}
+            width={40}
+            height={40}
+            alt="Logo"
+            className="min-w-10 min-h-10"
+          />
+          {/* <p className="text-left text-white hover:font-bold p-2 flex">{homeTitle}</p> */}
         </button>
       </div>
       <div className="w-full flex justify-end items-center">

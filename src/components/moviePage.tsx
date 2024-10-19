@@ -44,11 +44,11 @@ interface Genre {
     name: string
 }
 
-async function getPopularMovies() {
+async function getMovies(urlPath: string) {
     const backend_url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL;
 
     try {
-        const res = await fetch(`${backend_url}/movies/popular`)
+        const res = await fetch(`${backend_url}/movies/${urlPath}`)
         if (!res.ok) {
             console.error("Failed to retrieve movies");
             return [];
@@ -69,7 +69,7 @@ function formatDate(dateString: string): string {
     return date.toLocaleDateString('en-US', options);
 }
 
-export default function Popular() {
+export default function MoviePage({urlPath}: {urlPath: string}) {
     const [movies, setMovies] = useState<any[]>([]);
     const [activeMovieId, setActiveMovieId] = useState<number | null>(null); // Track active movie ID
     const [movieStreamingOption, setMovieStreamingOption] = useState<any>({});
@@ -125,7 +125,7 @@ export default function Popular() {
     useEffect(() => {
         setLoading(true);
         waitSeconds(1000)
-            .then(() =>getPopularMovies())
+            .then(() =>getMovies(urlPath))
             .then(moviesResult => {
                 console.log("Movie results: ")
                 console.log(moviesResult["results"])
@@ -167,7 +167,7 @@ export default function Popular() {
                                             <p className="text-base font-bold text-teal-500">Popularity: <span className="font-normal text-white">{movie.popularity ? movie.popularity.toFixed(2) : "N/A"}</span></p>
                                             <p className="text-base font-bold text-teal-500">Release Date: <span className="font-normal text-white">{movie.release_date ? formatDate(movie.release_date) : "N/A"}</span></p>
                                             <p className="text-base font-bold text-teal-500">Vote Average: <span className="font-normal text-white">{movie.vote_average ? `${movie.vote_average.toFixed(2)} / 10` : "N/A"}</span></p>
-                                            <p className="text-base font-bold text-teal-500">Vote Count: <span className="font-normal text-white">{movie.vote_count ? movie.vote_count : "N/A"}</span></p>        
+                                            <p className="text-base font-bold text-teal-500">Vote Count: <span className="font-normal text-white">{movie.vote_count ? movie.vote_count : "N/A"}</span></p>
                                         </div>
                                     </TriggerButton>
                                     <Modal
@@ -258,7 +258,7 @@ export default function Popular() {
                                                         // src={`https://www.youtube.com/embed/SrswRTLrrOw`}
                                                         src={`https://www.youtube.com/embed/${movieVideo}`}
                                                         width={500}
-                                                        height={310}
+                                                        height={290}
                                                         allowFullScreen
                                                         loading="lazy"
                                                         title="Description"
