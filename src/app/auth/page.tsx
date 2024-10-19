@@ -50,7 +50,7 @@ const Auth: React.FC = () => {
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
         <h2 className="text-2xl font-bold text-center text-gray-800 font-mono">
           {/* {isSignUp ? 'Sign Up' : 'Sign In'} */}
-          Movies.db
+          Movies.DB
         </h2>
         <form className="space-y-4" onSubmit={handleSubmit} noValidate>
           {isSignUp && (

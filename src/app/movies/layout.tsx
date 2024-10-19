@@ -7,7 +7,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
     <div>
         <div className="flex flex-col">
             {/* <Navbar /> */}
-            <NavTabs tabs={tabs} homeTitle="Movies.db" homeRoute="/"></NavTabs>
+            <NavTabs tabs={tabs} homeRoute="/"></NavTabs>
         </div>
         <main className="flex-grow p-4 text-white">
             {children}
