@@ -177,7 +177,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                 ) : <></> 
             }
             { loading ? <Loading /> :
-                <Suspense fallback={<p className="text-4xl text-center justify-center">Loading...</p>}>
+                <Suspense fallback={<Loading />}>
                     <div className="columns-sm space-y-4">
                         {
                             movies.map((movie, index) => (
