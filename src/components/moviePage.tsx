@@ -5,7 +5,8 @@ import { useState, useEffect, Suspense } from "react";
 import Loading from '@/components/loading';
 import { waitSeconds } from '@/lib/utils';
 import { Modal, StyledBackdrop, ModalContent, TriggerButton } from "@/components/modal";
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import {Pagination} from "@nextui-org/react";
 
 interface MovieResult {
     name: string;
@@ -45,24 +46,6 @@ interface Genre {
     name: string
 }
 
-async function getMovies(urlPath: string) {
-    const backend_url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL;
-
-    try {
-        const res = await fetch(`${backend_url}/movies/${urlPath}`)
-        if (!res.ok) {
-            console.error("Failed to retrieve movies");
-            return [];
-        }
-        const moviesResult = await res.json();
-        return moviesResult;
-    }
-    catch (e){
-        console.error("Error fetching movie: ", e);
-        return [];
-    }
-}
-
 function formatDate(dateString: string): string {
     const date = new Date(dateString);
     
@@ -70,14 +53,18 @@ function formatDate(dateString: string): string {
     return date.toLocaleDateString('en-US', options);
 }
 
-export default function MoviePage({urlPath}: {urlPath: string}) {
+export default function MoviePage({urlPath, paginated}: {urlPath: string, paginated: boolean}) {
     const [movies, setMovies] = useState<any[]>([]);
     const [activeMovieId, setActiveMovieId] = useState<number | null>(null); // Track active movie ID
     const [movieStreamingOption, setMovieStreamingOption] = useState<any>({});
     const [movieVideo, setMovieVideo] = useState<string>("");
+    const [pageNumber, setPageNumber] = useState<number | null>(paginated ? 1 : null);
+    const [totalPage, setTotalPage] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(true); 
     const searchParams = useSearchParams();
     const queryParam = searchParams.get('query');
+    const pathname = usePathname();
+    const { replace } = useRouter();
     const handleOpen = (movieId: number) => setActiveMovieId(movieId);
     const handleClose = () => setActiveMovieId(null);
 
@@ -96,6 +83,29 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
         }
         catch (e) {
             console.error("Error fetching movie: ", e);
+        }
+    }
+
+    async function getMovies() {
+        const backend_url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL;
+        // const params = new URLSearchParams(searchParams);
+    
+        try {
+            // const paginationNumber = params.get("page");
+            // setPageNumber(parseInt(paginationNumber ? paginationNumber : "1"));
+            let paginationPath = paginated ? `?page=${pageNumber}` : "";
+            const fullUrl = `${backend_url}/movies/${urlPath}${paginationPath}`;
+            const res = await fetch(fullUrl);
+            if (!res.ok) {
+                console.error("Failed to retrieve movies");
+                return [];
+            }
+            const moviesResult = await res.json();
+            return moviesResult;
+        }
+        catch (e){
+            console.error("Error fetching movie: ", e);
+            return [];
         }
     }
     
@@ -125,13 +135,21 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
         }
     }
 
+    async function handlePagination (currentPageNumber: number) {
+        const params = new URLSearchParams(searchParams);
+        setPageNumber(currentPageNumber);
+        params.set('page', currentPageNumber.toString());
+        replace(`${pathname}?${params.toString()}`);
+    }
+
     useEffect(() => {
         setLoading(true);
-        waitSeconds(1000)
-            .then(() =>getMovies(urlPath))
+        waitSeconds(500)
+            .then(() =>getMovies())
             .then(moviesResult => {
                 console.log("Movie results: ")
                 console.log(moviesResult["results"])
+                setTotalPage(moviesResult["total_pages"] > 500 ? 500 : moviesResult["total_pages"])
                 return moviesResult["results"]
             })
             .then(results => {
@@ -142,7 +160,7 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
                 setMovies(results)
                 setLoading(false);
             });
-    }, [urlPath]);
+    }, [urlPath, pageNumber, totalPage]);
 
     const handleMovieClick = (movie: MovieResult) => {
         getMovieStreamingOption(movie.id, movie.title);
@@ -151,10 +169,14 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
 
     return (
         <div>
-            <div className="justify-center items-center text-center">
-            </div>
-            {/* <Suspense fallback={ <Loading /> }> */}
-            { loading ? <Loading /> : 
+            {
+                paginated ? (
+                    <div className="flex justify-center items-center text-center mb-6 mt-1">
+                        <Pagination className="items-center justify-center" page={pageNumber ? pageNumber : 1} onChange={handlePagination} showControls boundaries={1} total={totalPage} initialPage={1} variant={"light"} />
+                    </div>
+                ) : <></> 
+            }
+            { loading ? <Loading /> :
                 <Suspense fallback={<p className="text-4xl text-center justify-center">Loading...</p>}>
                     <div className="columns-sm space-y-4">
                         {
@@ -317,7 +339,7 @@ export default function MoviePage({urlPath}: {urlPath: string}) {
                             ))
                         }
                     </div>
-                </Suspense>
+                </Suspense> 
             }
         </div>
     );

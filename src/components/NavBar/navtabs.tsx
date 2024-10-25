@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils";
 import DropdownNav from "@/components/NavBar/DropDownNav";
 import Image from "next/image";
 import movieLogo from "@/app/movies/icon.png";
-import Search from "@/components/search";
+// import Search from "@/components/search";
+import { usePathname } from "next/navigation";
 
 // Usage:
 /**
@@ -34,11 +35,14 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
 // export default function NavTabs({searchParams, urlPath, tabs, homeRoute }: { searchParams?: {query?: string; page?: string;}, urlPath: string, tabs: string[], homeRoute: string}) {
   // const query = searchParams?.query || '';
   // const currentPage = Number(searchParams?.page) || 1;
-  const [selected, setSelected] = useState<string>(tabs[0]);
+  const pathname = usePathname();
+  const [selected, setSelected] = useState<string>(pathname.split("/")[pathname.split("/").length - 1]);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
+    const pathArray = pathname.split("/");
+    console.log(pathArray[pathArray.length - 1]);
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768); 
     };
@@ -47,10 +51,10 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
     window.addEventListener("resize", handleResize);
     
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [pathname]);
 
   return (
-    <div className="overflow-auto flex w-full gap-4 bg-black/50 p-6 items-center">
+    <div className="overflow-auto flex w-full gap-4 bg-black/50 p-6 items-center scroll-smooth overscroll-contain">
       <div className="flex items-start">
         <button onClick={() => router.push(homeRoute)} className="px-2 shadow-lg">
           <Image
@@ -62,7 +66,7 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
           />
         </button>
       </div>
-      <Search placeholder="search movie..." mobile={isMobile}></Search>
+      {/* <Search placeholder="search movie..." mobile={isMobile}></Search> */}
       <div className="w-full flex justify-end items-center">
         {isMobile ? (
           <DropdownNav tabs={tabs} selected={selected} setSelected={setSelected} />

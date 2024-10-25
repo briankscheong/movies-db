@@ -17,7 +17,7 @@
     "@mui/system": "^6.1.2",
     "@nextui-org/react": "^2.4.8",
     "@splinetool/react-spline": "^4.0.0",
-    "framer-motion": "^11.11.8",
+    "framer-motion": "^11.11.9",
     "next": "14.2.13",
     "next-auth": "^4.24.7",
     "react": "^18",

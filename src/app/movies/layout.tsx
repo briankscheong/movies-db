@@ -9,7 +9,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
             {/* <Navbar /> */}
             <NavTabs tabs={tabs} homeRoute="/"></NavTabs>
         </div>
-        <main className="flex-grow p-4 text-white">
+        <main className="flex-grow p-4 text-white select-text">
             {children}
         </main>
         <footer className="text-white py-4 text-center shadow-md"> 
