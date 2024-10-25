@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import NavTabs from '@/components/NavBar/navtabs';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -10,7 +10,9 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
             <NavTabs tabs={tabs} homeRoute="/"></NavTabs>
         </div>
         <main className="flex-grow p-4 text-white select-text">
+          <Suspense fallback={<p className="text-4xl text-center justify-center">Loading...</p>}>
             {children}
+          </Suspense>
         </main>
         <footer className="text-white py-4 text-center shadow-md"> 
            {/* bg-slate-100  */}
