@@ -145,7 +145,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
     useEffect(() => {
         setLoading(true);
         waitSeconds(500)
-            .then(() =>getMovies())
+            .then(() => getMovies())
             .then(moviesResult => {
                 console.log("Movie results: ")
                 console.log(moviesResult["results"])
@@ -160,7 +160,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                 setMovies(results)
                 setLoading(false);
             });
-    }, [urlPath, pageNumber, totalPage, getMovies]);
+    }, [urlPath, pageNumber, totalPage]);
 
     const handleMovieClick = (movie: MovieResult) => {
         getMovieStreamingOption(movie.id, movie.title);
