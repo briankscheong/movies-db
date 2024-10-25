@@ -11,7 +11,7 @@ export default function Search({ placeholder, mobile }: { placeholder: string, m
     const maxSearchWidth = mobile ? "max-w-32" : "max-w-52";
     const searchMargin = mobile ? "mx-3" : "mx-6";
     const searchPlaceholder = mobile ? "search..." : placeholder;
-    const searchClassName = `${maxSearchWidth} peer block rounded-md hover:border hover:border-gray-200 py-[9px] pl-8 pr-4 text-sm text-white outline-2 placeholder:text-gray-300 bg-gradient-to-r from-indigo-900 to-blue-900`;
+    const searchClassName = `${maxSearchWidth} peer block rounded-md border border-transparent hover:border-gray-200 py-[6px] pl-9 pr-4 text-base text-white outline-2 placeholder:text-gray-300 bg-gradient-to-r from-indigo-900 to-blue-900`;
 
 
     function handleSearch(term: string | undefined) {
