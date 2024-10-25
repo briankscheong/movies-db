@@ -93,7 +93,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
         try {
             // const paginationNumber = params.get("page");
             // setPageNumber(parseInt(paginationNumber ? paginationNumber : "1"));
-            let paginationPath = paginated ? `?page=${pageNumber}` : "";
+            const paginationPath = paginated ? `?page=${pageNumber}` : "";
             const fullUrl = `${backend_url}/movies/${urlPath}${paginationPath}`;
             const res = await fetch(fullUrl);
             if (!res.ok) {
@@ -160,7 +160,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                 setMovies(results)
                 setLoading(false);
             });
-    }, [urlPath, pageNumber, totalPage]);
+    }, [urlPath, pageNumber, totalPage, getMovies]);
 
     const handleMovieClick = (movie: MovieResult) => {
         getMovieStreamingOption(movie.id, movie.title);
