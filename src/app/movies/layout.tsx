@@ -6,8 +6,9 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
   return (
     <div>
         <div className="flex flex-col">
-            {/* <Navbar /> */}
+          <Suspense fallback={<p className="text-4xl text-center justify-center">Loading...</p>}>
             <NavTabs tabs={tabs} homeRoute="/"></NavTabs>
+          </Suspense>
         </div>
         <main className="flex-grow p-4 text-white select-text">
           <Suspense fallback={<p className="text-4xl text-center justify-center">Loading...</p>}>

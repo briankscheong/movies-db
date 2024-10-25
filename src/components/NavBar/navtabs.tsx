@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import DropdownNav from "@/components/NavBar/DropDownNav";
 import Image from "next/image";
 import movieLogo from "@/app/movies/icon.png";
-// import Search from "@/components/search";
+import Search from "@/components/search";
 import { usePathname } from "next/navigation";
 
 // Usage:
@@ -41,8 +41,8 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
   const router = useRouter();
 
   useEffect(() => {
-    const pathArray = pathname.split("/");
-    console.log(pathArray[pathArray.length - 1]);
+    // const pathArray = pathname.split("/");
+    // console.log(pathArray[pathArray.length - 1]);
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768); 
     };
@@ -51,7 +51,7 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
     window.addEventListener("resize", handleResize);
     
     return () => window.removeEventListener("resize", handleResize);
-  }, [pathname]);
+  }, []);
 
   return (
     <div className="overflow-auto flex w-full gap-4 bg-black/50 p-6 items-center scroll-smooth overscroll-contain">
@@ -66,7 +66,7 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
           />
         </button>
       </div>
-      {/* <Search placeholder="search movie..." mobile={isMobile}></Search> */}
+      <Search placeholder="search movie..." mobile={isMobile}></Search>
       <div className="w-full flex justify-end items-center">
         {isMobile ? (
           <DropdownNav tabs={tabs} selected={selected} setSelected={setSelected} />
