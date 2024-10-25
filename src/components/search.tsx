@@ -9,9 +9,9 @@ export default function Search({ placeholder, mobile }: { placeholder: string, m
     const pathname = usePathname();
     const { replace } = useRouter();
     const maxSearchWidth = mobile ? "max-w-32" : "max-w-52";
-    const leftPadding = mobile ? "pl-4" : "pl-8";
+    const searchMargin = mobile ? "mx-3" : "mx-6";
     const searchPlaceholder = mobile ? "search..." : placeholder;
-    const searchClassName = `${maxSearchWidth} ${leftPadding} peer block rounded-md hover:border hover:border-gray-200 py-[9px] pr-4 text-sm text-white outline-2 placeholder:text-gray-300 bg-gradient-to-r from-indigo-900 to-blue-900`;
+    const searchClassName = `${maxSearchWidth} peer block rounded-md hover:border hover:border-gray-200 py-[9px] pl-8 pr-4 text-sm text-white outline-2 placeholder:text-gray-300 bg-gradient-to-r from-indigo-900 to-blue-900`;
 
 
     function handleSearch(term: string | undefined) {
@@ -25,7 +25,7 @@ export default function Search({ placeholder, mobile }: { placeholder: string, m
     }
     
     return (
-        <div className="mx-5">
+        <div className={searchMargin}>
             <div className="relative flex flex-1 flex-shrink-0">
                 <label htmlFor="search" className="sr-only">
                     Search
