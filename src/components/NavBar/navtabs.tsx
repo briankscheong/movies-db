@@ -66,8 +66,8 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
           />
         </button>
       </div>
-      <Search placeholder="search movie..."></Search>
-      {/* <Search placeholder="search movie..." mobile={isMobile}></Search> */}
+      {/* <Search placeholder="search movie..."></Search> */}
+      <Search placeholder="search movie..." mobile={isMobile}></Search>
       <div className="w-full flex justify-end items-center">
         {isMobile ? (
           <DropdownNav tabs={tabs} selected={selected} setSelected={setSelected} />
