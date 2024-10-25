@@ -19,7 +19,7 @@ const DropdownNav: React.FC<DropdownNavProps> = ({ tabs, selected, setSelected }
   return (
     <Dropdown showArrow
       classNames={{
-        content: "py-1 my-1 bg-transparent dark:bg-indigo-950/80 rounded-md",
+        content: "py-1 my-1 bg-transparent dark:bg-blue-950/80 rounded-md",
       }}>
       <DropdownTrigger>
         <Button className="rounded-sm bg-gradient-to-r from-indigo-800 to-blue-800 text-sm hover:bg-blue-800 py-2">
