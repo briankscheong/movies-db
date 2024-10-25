@@ -5,7 +5,7 @@ import {Button} from "@nextui-org/react";
 export default function Loading() {
   return (
     <div className="flex justify-center">
-        <Button className="bg-transparent" color="primary" isLoading></Button>
+        <Button className="bg-transparent" isLoading></Button>
     </div>
   );
 }

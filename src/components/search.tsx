@@ -28,13 +28,12 @@ export default function Search({ placeholder, mobile }: { placeholder: string, m
                     </label>
                     <MagnifyingGlassIcon className="absolute left-2 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-300 peer-focus:text-gray-200" />
                     <input
-                        className="max-w-28 peer block rounded-md border border-gray-200 py-[9px] pl-8 pr-4 text-sm text-white outline-2 placeholder:text-gray-400 bg-gradient-to-r from-indigo-900 to-blue-900"
+                        className="max-w-30 peer block rounded-md border border-gray-200 py-[9px] pl-8 pr-4 text-sm text-white outline-2 placeholder:text-gray-400 bg-gradient-to-r from-indigo-900 to-blue-900"
                         placeholder="search..."
                         onChange={(e) => {
                             handleSearch(e.target.value);
                         }}
                         defaultValue={searchParams.get('query')?.toString()}
-                        value={searchParams.get('query')?.toString()}
                     />
                 </div>
             </div>

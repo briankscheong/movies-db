@@ -17,18 +17,21 @@ const DropdownNav: React.FC<DropdownNavProps> = ({ tabs, selected, setSelected }
   };
 
   return (
-    <Dropdown>
+    <Dropdown showArrow
+      classNames={{
+        content: "py-1 my-1 bg-transparent dark:bg-indigo-950/80 rounded-md",
+      }}>
       <DropdownTrigger>
-        <Button variant="bordered" className="rounded-sm bg-gradient-to-r from-indigo-800 to-blue-800 text-sm hover:bg-blue-800 p-2 px-4">
+        <Button className="rounded-sm bg-gradient-to-r from-indigo-800 to-blue-800 text-sm hover:bg-blue-800 py-2">
           {selected}
         </Button>
       </DropdownTrigger>
-      <DropdownMenu aria-label="Navigation Tabs" className="text-sm text-white bg-blue-950/75 text-center rounded-sm p-2">
+      <DropdownMenu aria-label="Navigation Tabs" className="border-transparent text-sm text-white bg-transparent text-center rounded-sm">
         {tabs.map((tab) => (
           <DropdownItem
             key={tab}
             onClick={() => handleSelect(tab)}
-            className="text-center justify-center items-center text-white bg-transparent hover:bg-gradient-to-r from-indigo-800 to-blue-800 p-2 rounded-sm"
+            className="border-transparent text-center justify-center items-center text-white bg-transparent hover:bg-gradient-to-r from-indigo-800 to-blue-800 p-2 rounded-sm"
           >
             {tab}
           </DropdownItem>
