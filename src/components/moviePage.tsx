@@ -185,9 +185,9 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                                     !queryParam?.trim().replaceAll(" ", "") || movie.title.toLowerCase().trim().replaceAll(" ", "").includes(queryParam.toLowerCase().trim().replaceAll(" ", "")) ? (
                                         <div key={index}>
                                             <TriggerButton type="button" onClick={() => handleMovieClick(movie)}>
-                                                <div className="items-center justify-center p-8 bg-gradient-to-r from-gray-950 to-gray-900 shadow-lg rounded-lg space-y-6 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" >
+                                                <div className="w-full items-center justify-center p-8 bg-gradient-to-r from-gray-950 to-gray-900 shadow-lg rounded-lg space-y-6 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" >
                                                     <div className="flex items-center justify-center">
-                                                        <Image src={movie.poster_path} alt="poster image" width={ 350 } height={ 750 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
+                                                        <Image src={movie.poster_path} alt="poster image" width={ 370 } height={ 750 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
                                                     </div>
                                                     <p className="text-2xl font-extrabold text-cyan-500 tracking-wide hover:text-cyan-300 transition duration-300">{movie.title}</p>
                                                     <p className="text-base font-bold text-teal-500 mb-1">Overview: <span className="font-normal text-white">{movie.overview ? movie.overview : "N/A"}</span></p>

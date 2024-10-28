@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import {Providers} from "./providers";
+import { Viewport } from "next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,6 +18,10 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Movies.DB",
   description: "A site to get the most up-to-date information of movies",
+};
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
