@@ -187,7 +187,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                                             <TriggerButton type="button" onClick={() => handleMovieClick(movie)}>
                                                 <div className="items-center justify-center p-8 bg-gradient-to-r from-gray-950 to-gray-900 shadow-lg rounded-lg space-y-6 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" >
                                                     <div className="flex items-center justify-center">
-                                                        <Image src={movie.poster_path} alt="poster image" width={ 400 } height={ 800 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
+                                                        <Image src={movie.poster_path} alt="poster image" width={ 350 } height={ 750 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
                                                     </div>
                                                     <p className="text-2xl font-extrabold text-cyan-500 tracking-wide hover:text-cyan-300 transition duration-300">{movie.title}</p>
                                                     <p className="text-base font-bold text-teal-500 mb-1">Overview: <span className="font-normal text-white">{movie.overview ? movie.overview : "N/A"}</span></p>
@@ -206,7 +206,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                                             >
                                                 <ModalContent sx={{ 
                                                     width: 600,
-                                                    maxHeight: '95vh', // Ensure the modal height is limited to 95% of the viewport height
+                                                    maxHeight: '90vh', // Ensure the modal height is limited to 85% of the viewport height
                                                     overflowY: 'auto',  // Enable vertical scrolling when content overflows
                                                     padding: '20px',
                                                     borderRadius: '12px',
