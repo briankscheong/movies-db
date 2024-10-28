@@ -146,6 +146,13 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
     useEffect(() => {
         setLoading(true);
         setIsMobile(window.innerWidth <= 768); 
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768); 
+          };
+          
+        handleResize(); // Set initial state
+        window.addEventListener("resize", handleResize);
+        
         waitSeconds(500)
             .then(() => getMovies())
             .then(moviesResult => {
@@ -162,7 +169,8 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                 setMovies(results)
                 setLoading(false);
             });
-    }, [urlPath, pageNumber, totalPage, window.innerWidth]);
+        return () => window.removeEventListener("resize", handleResize);
+    }, [urlPath, pageNumber, totalPage]);
 
     const handleMovieClick = (movie: MovieResult) => {
         getMovieStreamingOption(movie.id, movie.title);
@@ -170,6 +178,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
     };
 
     const maxHeightValue = isMobile ? '80vh' : '93vh';
+    const widthValue = isMobile ? '95vw' : 600;
 
     return (
         <div>
@@ -209,7 +218,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                                                 slots={{ backdrop: StyledBackdrop }}
                                             >
                                                 <ModalContent sx={{ 
-                                                    width: 600,
+                                                    width: widthValue,
                                                     maxHeight: maxHeightValue, // Ensure the modal height is limited to 85% of the viewport height
                                                     overflowY: 'auto',  // Enable vertical scrolling when content overflows
                                                     padding: '20px',
