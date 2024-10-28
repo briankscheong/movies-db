@@ -59,6 +59,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
     const [movieStreamingOption, setMovieStreamingOption] = useState<any>({});
     const [movieVideo, setMovieVideo] = useState<string>("");
     const [pageNumber, setPageNumber] = useState<number | null>(paginated ? 1 : null);
+    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
     const [totalPage, setTotalPage] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(true); 
     const searchParams = useSearchParams();
@@ -144,6 +145,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
 
     useEffect(() => {
         setLoading(true);
+        setIsMobile(window.innerWidth <= 768); 
         waitSeconds(500)
             .then(() => getMovies())
             .then(moviesResult => {
@@ -160,12 +162,14 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                 setMovies(results)
                 setLoading(false);
             });
-    }, [urlPath, pageNumber, totalPage]);
+    }, [urlPath, pageNumber, totalPage, window.innerWidth]);
 
     const handleMovieClick = (movie: MovieResult) => {
         getMovieStreamingOption(movie.id, movie.title);
         getMovieVideo(movie.id);
     };
+
+    const maxHeightValue = isMobile ? '80vh' : '93vh';
 
     return (
         <div>
@@ -187,7 +191,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                                             <TriggerButton type="button" onClick={() => handleMovieClick(movie)}>
                                                 <div className="w-full items-center justify-center p-8 bg-gradient-to-r from-gray-950 to-gray-900 shadow-lg rounded-lg space-y-6 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" >
                                                     <div className="flex items-center justify-center">
-                                                        <Image src={movie.poster_path} alt="poster image" width={ 370 } height={ 750 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
+                                                        <Image src={movie.poster_path} alt="poster image" width={ 360 } height={ 750 } className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
                                                     </div>
                                                     <p className="text-2xl font-extrabold text-cyan-500 tracking-wide hover:text-cyan-300 transition duration-300">{movie.title}</p>
                                                     <p className="text-base font-bold text-teal-500 mb-1">Overview: <span className="font-normal text-white">{movie.overview ? movie.overview : "N/A"}</span></p>
@@ -206,7 +210,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                                             >
                                                 <ModalContent sx={{ 
                                                     width: 600,
-                                                    maxHeight: '90vh', // Ensure the modal height is limited to 85% of the viewport height
+                                                    maxHeight: maxHeightValue, // Ensure the modal height is limited to 85% of the viewport height
                                                     overflowY: 'auto',  // Enable vertical scrolling when content overflows
                                                     padding: '20px',
                                                     borderRadius: '12px',
