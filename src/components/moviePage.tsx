@@ -59,7 +59,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
     const [movieStreamingOption, setMovieStreamingOption] = useState<any>({});
     const [movieVideo, setMovieVideo] = useState<string>("");
     const [pageNumber, setPageNumber] = useState<number | null>(paginated ? 1 : null);
-    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState<boolean>(false);
     const [totalPage, setTotalPage] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(true); 
     const searchParams = useSearchParams();
@@ -145,7 +145,6 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
 
     useEffect(() => {
         setLoading(true);
-        setIsMobile(window.innerWidth <= 768); 
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768); 
           };
