@@ -55,7 +55,7 @@ export default function Home() {
             return [];
         }
         const moviesResult = await res.json();
-        return moviesResult.results.slice(0, 6);
+        return moviesResult.results.sort(() => 0.5 - Math.random()).slice(0, 6);
     }
     catch (e){
         console.error("Error fetching movie: ", e);
