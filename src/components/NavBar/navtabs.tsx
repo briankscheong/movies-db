@@ -90,7 +90,7 @@ const Tab = ({ text, selected, setSelected, router }: TabProps) => {
       }}
       className={cn(
         "relative rounded-md p-2 text-sm transition-all mx-2",
-        selected ? "text-white" : "text-slate-300 hover:font-black",
+        selected ? "text-white" : "text-slate-300 hover:bg-gradient-to-r from-indigo-700/20 to-blue-700/20",
       )}
     >
       <p className="relative z-50 min-w-20">{text}</p>
