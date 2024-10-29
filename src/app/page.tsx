@@ -9,10 +9,10 @@ import Expandable from "@/components/animata/carousel/expandable";
 import { useEffect, useState } from "react";
 import Loading from "@/components/loading";
 import AnimatedDock from "@/components/animata/container/animated-dock";
-import { IoTrendingUp } from "react-icons/io5";
+import { IoHomeOutline, IoTrendingUp } from "react-icons/io5";
 import { FaHotjar } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
-// import { IoHomeOutline, IoSearch } from "react-icons/io5";
+// import { IoSearch } from "react-icons/io5";
 // import { IoMdNotificationsOutline } from "react-icons/io";
 // import { CgProfile } from "react-icons/cg";
 
@@ -109,6 +109,11 @@ export default function Home() {
         <AnimatedDock
           items={[
             {
+              href: '/',
+              icon: <IoHomeOutline />,
+              title: 'Home'
+            },
+            {
               href: '/movies/trending',
               icon: <IoTrendingUp />,
               title: 'Trending'
@@ -123,11 +128,6 @@ export default function Home() {
               icon: <MdFavoriteBorder />,
               title: 'Top Rated'
             },
-            // {
-            //   href: '/',
-            //   icon: <IoHomeOutline />,
-            //   title: 'Home'
-            // },
             // {
             //   href: '/profile',
             //   icon: <CgProfile />,
