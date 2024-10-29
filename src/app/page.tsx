@@ -2,7 +2,7 @@
 
 // import Auth from "@/pages/auth";
 import "@/app/globals.css";
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import GibberishText from "@/components/gibberish-text";
 import TypingText from "@/components/typing-text";
 import Expandable from "@/components/animata/carousel/expandable";
@@ -40,7 +40,7 @@ interface MovieProps {
 }
 
 export default function Home() {
-  const router = useRouter();
+  // const router = useRouter();
   const [items, setItems] = useState<ItemProps[]>([]);
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
