@@ -2,6 +2,7 @@ import { HTMLAttributes, useEffect, useState } from "react";
 
 import WaveReveal from "@/components/animata/text/wave-reveal";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface ImageProps extends HTMLAttributes<HTMLDivElement> {
   item: { image: string; title: string };
@@ -27,13 +28,13 @@ const List = ({ item, className, index, activeItem, ...props }: ImageProps) => {
       )}
       {...props}
     >
-      <img
+      <Image
         src={item.image}
         alt={item.title}
         className={cn("h-full w-full object-cover", {
           "blur-[2px]": index !== activeItem,
-        })}
-      />
+        })}>
+      </Image>
       {index === activeItem && (
         <div className="absolute bottom-4 left-4 min-w-fit text-white md:bottom-8 md:left-8">
           <WaveReveal
@@ -70,7 +71,7 @@ const items = [
 
 export default function Expandable({ list = items, autoPlay = true, className }: ExpandableProps) {
   const [activeItem, setActiveItem] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering, setIsHovering] = useState(true);
 
   useEffect(() => {
     if (!autoPlay) {

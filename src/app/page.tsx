@@ -11,11 +11,11 @@ import Loading from "@/components/loading";
 import AnimatedDock from "@/components/animata/container/animated-dock";
 import { IoHomeOutline, IoTrendingUp } from "react-icons/io5";
 import { FaHotjar } from "react-icons/fa";
+import { MdFavoriteBorder } from "react-icons/md";
 // import { IoSearch } from "react-icons/io5";
 // import { IoMdNotificationsOutline } from "react-icons/io";
-import { MdFavoriteBorder } from "react-icons/md";
+// import { CgProfile } from "react-icons/cg";
 
-import { CgProfile } from "react-icons/cg";
 
 interface ItemProps {
   image: string,
