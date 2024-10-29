@@ -69,7 +69,7 @@ export default function Home() {
         setMovies(moviesResult);
       })
       .then(() => {
-        const items: ItemProps[] = movies.sort(() => 0.5 - Math.random()).map(movie => ({
+        const items: ItemProps[] = movies.map(movie => ({
           image: `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`,
           title: movie.title
         }));
