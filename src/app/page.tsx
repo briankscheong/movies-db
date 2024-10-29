@@ -124,7 +124,7 @@ export default function Home() {
               title: 'Popular'
             },
             {
-              href: '/top-rated',
+              href: '/movies/top-rated',
               icon: <MdFavoriteBorder />,
               title: 'Top Rated'
             },
