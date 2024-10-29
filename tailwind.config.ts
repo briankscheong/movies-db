@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      transitionTimingFunction: {
+        "minor-spring": "cubic-bezier(0.18,0.89,0.82,1.04)",
+      },
       colors: {
         background: "var(--background)",
         foreground: "hsl(var(--foreground))",
@@ -35,6 +38,18 @@ const config: Config = {
         meteor: {
           "0%": { transform: "translateY(-20%) translateX(-50%)" },
           "100%": { transform: "translateY(300%) translateX(-50%)" },
+        },
+        "reveal-up": {
+          "0%": { opacity: "0", transform: "translateY(80%)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "reveal-down": {
+          "0%": { opacity: "0", transform: "translateY(-80%)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+          "content-blur": {
+          "0%": { filter: "blur(0.3rem)" },
+          "100%": { filter: "blur(0)" },
         },
       },
       animation: {
