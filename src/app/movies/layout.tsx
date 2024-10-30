@@ -16,12 +16,6 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
             {children}
           </Suspense>
         </main>
-        <footer className="text-white py-4 text-center shadow-md"> 
-           {/* bg-slate-100  */}
-            <div className="container mx-auto">
-            &copy; {new Date().getFullYear()} Movies.db. All rights reserved.
-            </div>
-        </footer>
     </div>
   );
 };

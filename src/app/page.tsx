@@ -2,19 +2,22 @@
 
 // import Auth from "@/pages/auth";
 import "@/app/globals.css";
-// import { useRouter } from 'next/navigation';
 import GibberishText from "@/components/gibberish-text";
 import TypingText from "@/components/typing-text";
 import Expandable from "@/components/animata/carousel/expandable";
 import { useEffect, useState } from "react";
 import Loading from "@/components/loading";
 import AnimatedDock from "@/components/animata/container/animated-dock";
-import { IoHomeOutline, IoTrendingUp } from "react-icons/io5";
+import { IoTrendingUp } from "react-icons/io5";
 import { FaHotjar } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
-// import { IoSearch } from "react-icons/io5";
-// import { IoMdNotificationsOutline } from "react-icons/io";
-// import { CgProfile } from "react-icons/cg";
+/**
+ * import { useRouter } from 'next/navigation';
+ * import Marquee from "@/components/animata/container/marquee";
+ * import { IoSearch, IoHomeOutline } from "react-icons/io5";
+ * import { IoMdNotificationsOutline } from "react-icons/io";
+ * import { CgProfile } from "react-icons/cg";
+ */
 
 
 interface ItemProps {
@@ -109,11 +112,6 @@ export default function Home() {
         <AnimatedDock
           items={[
             {
-              href: '/',
-              icon: <IoHomeOutline />,
-              title: 'Home'
-            },
-            {
               href: '/movies/trending',
               icon: <IoTrendingUp />,
               title: 'Trending'
@@ -128,11 +126,6 @@ export default function Home() {
               icon: <MdFavoriteBorder />,
               title: 'Top Rated'
             },
-            // {
-            //   href: '/profile',
-            //   icon: <CgProfile />,
-            //   title: 'Profile'
-            // }
           ]}
           smallClassName="w-full"
         />

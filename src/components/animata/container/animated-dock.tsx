@@ -170,17 +170,19 @@ const SmallDock = ({
         )}
       </AnimatePresence>
       {/* Button to toggle the small dock open/close */}
-      <button
-        onClick={() => setIsOpen(!isOpen)} // Toggle isOpen state on click
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-black shadow-md backdrop-blur-md dark:bg-black/20 dark:text-white"
-      >
-        {/* Render the appropriate icon based on open/close state */}
-        {isOpen ? (
-          <X className="h-5 w-5" /> // Show close icon when open
-        ) : (
-          <Menu className="h-5 w-5" /> // Show menu icon when closed
-        )}
-      </button>
+      <div className="flex items-center justify-center">
+        <button
+            onClick={() => setIsOpen(!isOpen)} // Toggle isOpen state on click
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-black shadow-md backdrop-blur-md dark:bg-black/20 dark:text-white"
+        >
+            {/* Render the appropriate icon based on open/close state */}
+            {isOpen ? (
+            <X className="h-5 w-5" /> // Show close icon when open
+            ) : (
+            <Menu className="h-5 w-5" /> // Show menu icon when closed
+            )}
+        </button>
+      </div>
     </div>
   );
 };

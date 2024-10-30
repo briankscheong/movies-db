@@ -47,14 +47,24 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(-80%)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-          "content-blur": {
+        "content-blur": {
           "0%": { filter: "blur(0.3rem)" },
           "100%": { filter: "blur(0)" },
+        },
+        "marquee-x": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-y": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
       },
       animation: {
         typing: "typing 3s steps(20), blink .8s infinite",
         meteor: "meteor var(--duration) var(--delay) ease-in-out infinite",
+        "marquee-horizontal": "marquee-x var(--duration) infinite linear",
+        "marquee-vertical": "marquee-y var(--duration) linear infinite",
       },
       extend: {
         transitionProperty: {
