@@ -11,8 +11,9 @@ import AnimatedDock from "@/components/animata/container/animated-dock";
 import { IoTrendingUp } from "react-icons/io5";
 import { FaHotjar } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
+import { useRouter } from 'next/navigation';
+
 /**
- * import { useRouter } from 'next/navigation';
  * import Marquee from "@/components/animata/container/marquee";
  * import { IoSearch, IoHomeOutline } from "react-icons/io5";
  * import { IoMdNotificationsOutline } from "react-icons/io";
@@ -43,7 +44,7 @@ interface MovieProps {
 }
 
 export default function Home() {
-  // const router = useRouter();
+  const router = useRouter();
   const [items, setItems] = useState<ItemProps[]>([]);
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -107,7 +108,6 @@ export default function Home() {
           loading ? <Loading></Loading> : <Expandable className="w-5/6 min-w-72 storybook-fix" list={items} />
         }
       </div>
-      {/* <button className="ease-in px-4 py-2 text-white border hover:border-2 hover:shadow active:shadow-xl active:bg-blue-900 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button> */}
       <div className="relative flex h-40 w-full items-center justify-center">
         <AnimatedDock
           items={[
@@ -130,6 +130,7 @@ export default function Home() {
           smallClassName="w-full"
         />
       </div>
+      <button className="ease-in px-4 py-2 text-white border hover:border-2 hover:shadow active:shadow-xl active:bg-blue-900 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button>
     </div>
   );
 }
