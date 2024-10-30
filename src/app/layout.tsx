@@ -52,17 +52,17 @@ export default function RootLayout({
         </div>
         <div className="flex flex-row items-center justify-center">
           <div className="mx-4 my-3">
-            <Link href="https://www.linkedin.com/in/brian-cheong-computer-software/" aria-label="LinkedIn Profile">
+            <Link href="https://www.linkedin.com/in/brian-cheong-computer-software/" aria-label="LinkedIn Profile" rel="noopener noreferrer" target="_blank">
               <FaLinkedin size={20}/>
             </Link>
           </div>
           <div className="mx-4 my-3">
-            <Link href="https://github.com/briankscheong/" aria-label="GitHub Profile">
+            <Link href="https://github.com/briankscheong/" aria-label="GitHub Profile" rel="noopener noreferrer" target="_blank">
               <FaGithub size={20}/>
             </Link>
           </div>
           <div className="mx-4 my-3">
-            <Link href="https://www.instagram.com/brian_cheong/" aria-label="Instagram Profile">
+            <Link href="https://www.instagram.com/brian_cheong/" aria-label="Instagram Profile" rel="noopener noreferrer" target="_blank">
               <FaInstagram size={20}/>
             </Link>
           </div>
