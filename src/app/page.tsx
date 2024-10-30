@@ -92,7 +92,7 @@ export default function Home() {
       <div className="flex flex-row justify-center items-center">
           {/* <TypingText className="text-center text-base font-bold font-mono m-8 animate-typing whitespace-nowrap relative border-r-4 border-r-cyan-700"> */}
           <TypingText 
-              className="select-text text-center text-base font-bold font-mono m-10"
+              className="select-text text-center text-base font-bold font-mono m-9"
               alwaysVisibleCount={1}
               delay={40}
               // smooth
