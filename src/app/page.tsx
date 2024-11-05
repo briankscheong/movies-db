@@ -88,7 +88,7 @@ export default function Home() {
   // });
 
   return (
-    <div className="w-screen h-[calc(100vh-5rem)] text-center pt-20 px-5 items-center justify-center bg-gradient-to-b from-gray-950 to-black">
+    <div className="w-screen h-screen text-center pt-20 px-5 items-center justify-center bg-gradient-to-b from-gray-950 to-black">
       <Image className="w-screen h-screen opacity-30" src={Wallpaper} alt="Movies wallpaper" layout="fill" objectFit="cover"></Image>
       <GibberishText text="Movies.DB" className="text-4xl font-bold text-white font-mono" />
       <br />
