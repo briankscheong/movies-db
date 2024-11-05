@@ -4,13 +4,13 @@
 import "@/app/globals.css";
 import GibberishText from "@/components/gibberish-text";
 import TypingText from "@/components/typing-text";
-import Expandable from "@/components/animata/carousel/expandable";
+// import Expandable from "@/components/animata/carousel/expandable";
 import { useEffect, useState } from "react";
-import Loading from "@/components/loading";
-import AnimatedDock from "@/components/animata/container/animated-dock";
-import { IoTrendingUp } from "react-icons/io5";
-import { FaHotjar } from "react-icons/fa";
-import { MdFavoriteBorder } from "react-icons/md";
+// import Loading from "@/components/loading";
+// import AnimatedDock from "@/components/animata/container/animated-dock";
+// import { IoTrendingUp } from "react-icons/io5";
+// import { FaHotjar } from "react-icons/fa";
+// import { MdFavoriteBorder } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import Wallpaper from "@/public/images/wallpaper.jpg"
@@ -47,45 +47,45 @@ interface MovieProps {
 
 export default function Home() {
   const router = useRouter();
-  const [items, setItems] = useState<ItemProps[]>([]);
-  const [movies, setMovies] = useState<MovieProps[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [movies, setMovies] = useState<MovieProps[]>([]);
+  // const [items, setItems] = useState<ItemProps[]>([]);
+  // const [loading, setLoading] = useState<boolean>(true);
 
-  async function getMovies() {
-    const backend_url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL;
-    try {
-        const fullUrl = `${backend_url}/movies/popular?page=1`;
-        const res = await fetch(fullUrl);
-        if (!res.ok) {
-            console.error("Failed to retrieve movies");
-            return [];
-        }
-        const moviesResult = await res.json();
-        return moviesResult.results.slice(0, 6);
-    }
-    catch (e){
-        console.error("Error fetching movie: ", e);
-        return [];
-    }
-  }
+  // async function getMovies() {
+  //   const backend_url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL;
+  //   try {
+  //       const fullUrl = `${backend_url}/movies/popular?page=1`;
+  //       const res = await fetch(fullUrl);
+  //       if (!res.ok) {
+  //           console.error("Failed to retrieve movies");
+  //           return [];
+  //       }
+  //       const moviesResult = await res.json();
+  //       return moviesResult.results.slice(0, 6);
+  //   }
+  //   catch (e){
+  //       console.error("Error fetching movie: ", e);
+  //       return [];
+  //   }
+  // }
 
-  useEffect(() => {
-    getMovies()
-      .then(moviesResult => {
-        setMovies(moviesResult);
-      })
-      .then(() => {
-        const items: ItemProps[] = movies.map(movie => ({
-          image: `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`,
-          title: movie.title
-        }));
-        setItems(items);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  });
+  // useEffect(() => {
+  //   getMovies()
+  //     .then(moviesResult => {
+  //       setMovies(moviesResult);
+  //     })
+  //     .then(() => {
+  //       const items: ItemProps[] = movies.map(movie => ({
+  //         image: `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`,
+  //         title: movie.title
+  //       }));
+  //       setItems(items);
+  //       setLoading(false);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     })
+  // });
 
   return (
     <div className="w-screen text-center py-10 px-5 items-center justify-center">
