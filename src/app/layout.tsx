@@ -36,13 +36,14 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-svh bg-gradient-to-b from-blue-950 to-black text-white bg-fixed`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-blue-950 to-black text-white bg-fixed`}>
+        {/* min-h-svh */}
         {/* <meta name="theme-color" content="#1e3a8a"/> */}
         <Providers>
           {children}
         </Providers>
       </body>
-      <footer className="bg-gray-950 text-white py-4 text-center shadow-md text-xs"> 
+      <footer className="bg-gray-950 text-white py-4 pb-3 text-center shadow-md text-xs"> 
         {/* bg-slate-100  */}
         <div className="container mx-auto">
           &copy; {new Date().getFullYear()} Movies.db. All rights reserved.
