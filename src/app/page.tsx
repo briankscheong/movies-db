@@ -13,7 +13,7 @@ import TypingText from "@/components/typing-text";
 // import { MdFavoriteBorder } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
-import Wallpaper from "@/public/images/wallpaper_2.jpg"
+import Wallpaper from "@/public/images/wallpaper.jpg"
 
 /**
  * import Marquee from "@/components/animata/container/marquee";
