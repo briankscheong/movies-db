@@ -5,7 +5,7 @@ import "@/app/globals.css";
 import GibberishText from "@/components/gibberish-text";
 import TypingText from "@/components/typing-text";
 // import Expandable from "@/components/animata/carousel/expandable";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 // import Loading from "@/components/loading";
 // import AnimatedDock from "@/components/animata/container/animated-dock";
 // import { IoTrendingUp } from "react-icons/io5";
@@ -23,27 +23,27 @@ import Wallpaper from "@/public/images/wallpaper.jpg"
  */
 
 
-interface ItemProps {
-  image: string,
-  title: string
-}
+// interface ItemProps {
+//   image: string,
+//   title: string
+// }
 
-interface MovieProps {
-  adult: boolean,
-  backdrop_path: string,
-  genre_ids: number[],
-  id: number,
-  original_language: string,
-  original_title: string,
-  overview: string,
-  popularity: number[],
-  poster_path: string,
-  release_date: string,
-  title: string,
-  video: boolean,
-  vote_average: number,
-  vote_count: number
-}
+// interface MovieProps {
+//   adult: boolean,
+//   backdrop_path: string,
+//   genre_ids: number[],
+//   id: number,
+//   original_language: string,
+//   original_title: string,
+//   overview: string,
+//   popularity: number[],
+//   poster_path: string,
+//   release_date: string,
+//   title: string,
+//   video: boolean,
+//   vote_average: number,
+//   vote_count: number
+// }
 
 export default function Home() {
   const router = useRouter();
