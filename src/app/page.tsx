@@ -13,7 +13,7 @@ import TypingText from "@/components/typing-text";
 // import { MdFavoriteBorder } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
-import Wallpaper from "@/public/images/wallpaper.jpg"
+import Wallpaper from "@/public/images/wallpaper_2.jpg"
 
 /**
  * import Marquee from "@/components/animata/container/marquee";
@@ -88,8 +88,8 @@ export default function Home() {
   // });
 
   return (
-    <div className="w-screen h-screen text-center pt-20 pb-10 px-5 items-center justify-center bg-gradient-to-b from-gray-950 to-black">
-      <Image className="opacity-30" src={Wallpaper} alt="Movies wallpaper" layout="fill" objectFit="cover"></Image>
+    <div className="w-screen h-screen text-center pt-20 px-5 items-center justify-center bg-gradient-to-b from-gray-950 to-black">
+      <Image className="opacity-35" src={Wallpaper} alt="Movies wallpaper" layout="fill" objectFit="cover"></Image>
       <GibberishText text="Movies.DB" className="text-4xl font-bold text-white font-mono" />
       <br />
       <div className="w-full absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-row justify-center items-center">
