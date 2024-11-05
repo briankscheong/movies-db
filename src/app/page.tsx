@@ -133,7 +133,7 @@ export default function Home() {
           smallClassName="w-full"
         />
       </div> */}
-      <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ease-in px-4 py-2 font-bold text-white border hover:border-2 hover:shadow active:shadow-xl active:bg-blue-900 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button>
+      <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ease-in px-4 py-2 font-bold text-white border hover:border-2 hover:shadow active:shadow-xl active:bg-gray-800 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button>
     </div>
   );
 }
