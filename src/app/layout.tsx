@@ -43,7 +43,7 @@ export default function RootLayout({
           {children}
         </Providers>
       </body>
-      <footer className="bg-gray-950 text-white py-4 pb-3 text-center shadow-md text-xs"> 
+      <footer className="bg-gray-950 text-white py-4 text-center shadow-md text-xs"> 
         {/* bg-slate-100  */}
         <div className="container mx-auto">
           &copy; {new Date().getFullYear()} Movies.db. All rights reserved.
