@@ -92,7 +92,7 @@ export default function Home() {
       <Image className="w-screen h-screen opacity-35" src={Wallpaper} alt="Movies wallpaper" layout="fill" objectFit="cover"></Image>
       <GibberishText text="Movies.DB" className="text-4xl font-bold text-white font-mono" />
       <br />
-      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-row justify-center items-center">
+      <div className="w-full absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-row justify-center items-center">
           {/* <TypingText className="text-center text-base font-bold font-mono m-8 animate-typing whitespace-nowrap relative border-r-4 border-r-cyan-700"> */}
           <TypingText 
               className="select-text text-center text-xl font-bold font-mono m-9"
