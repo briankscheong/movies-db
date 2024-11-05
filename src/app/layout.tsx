@@ -36,7 +36,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-svh bg-gradient-to-b from-blue-900 to-gray-950 text-white bg-fixed`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-svh bg-gradient-to-b from-blue-950 to-black text-white bg-fixed`}>
         {/* <meta name="theme-color" content="#1e3a8a"/> */}
         <Providers>
           {children}
@@ -53,17 +53,17 @@ export default function RootLayout({
         <div className="flex flex-row items-center justify-center">
           <div className="mx-4 my-3">
             <Link href="https://www.linkedin.com/in/brian-cheong-computer-software/" aria-label="LinkedIn Profile" rel="noopener noreferrer" target="_blank">
-              <FaLinkedin size={20}/>
+              <FaLinkedin size={25}/>
             </Link>
           </div>
           <div className="mx-4 my-3">
             <Link href="https://github.com/briankscheong/" aria-label="GitHub Profile" rel="noopener noreferrer" target="_blank">
-              <FaGithub size={20}/>
+              <FaGithub size={25}/>
             </Link>
           </div>
           <div className="mx-4 my-3">
             <Link href="https://www.instagram.com/brian_cheong/" aria-label="Instagram Profile" rel="noopener noreferrer" target="_blank">
-              <FaInstagram size={20}/>
+              <FaInstagram size={25}/>
             </Link>
           </div>
         </div>

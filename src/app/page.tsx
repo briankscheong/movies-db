@@ -12,6 +12,8 @@ import { IoTrendingUp } from "react-icons/io5";
 import { FaHotjar } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useRouter } from 'next/navigation';
+import Image from "next/image";
+import Wallpaper from "@/public/images/wallpaper.jpg"
 
 /**
  * import Marquee from "@/components/animata/container/marquee";
@@ -87,12 +89,13 @@ export default function Home() {
 
   return (
     <div className="w-screen text-center py-10 px-5 items-center justify-center">
-      <GibberishText text="Movies.DB" className="text-4xl font-bold text-gray-100 font-mono" />
+      <Image className="w-screen h-screen opacity-35" src={Wallpaper} alt="Movies wallpaper" layout="fill" objectFit="cover"></Image>
+      <GibberishText text="Movies.DB" className="text-4xl font-bold text-white font-mono" />
       <br />
-      <div className="flex flex-row justify-center items-center">
+      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-row justify-center items-center">
           {/* <TypingText className="text-center text-base font-bold font-mono m-8 animate-typing whitespace-nowrap relative border-r-4 border-r-cyan-700"> */}
           <TypingText 
-              className="select-text text-center text-base font-bold font-mono m-9"
+              className="select-text text-center text-xl font-bold font-mono m-9"
               alwaysVisibleCount={1}
               delay={40}
               // smooth
@@ -103,12 +106,12 @@ export default function Home() {
               onComplete={() =>{}}>
           </TypingText>
       </div>
-      <div className="flex items-center justify-center">
+      {/* <div className="flex items-center justify-center">
         {
           loading ? <Loading></Loading> : <Expandable className="w-5/6 min-w-72 storybook-fix" list={items} />
         }
-      </div>
-      <div className="relative flex h-40 w-full items-center justify-center">
+      </div> */}
+      {/* <div className="relative flex h-40 w-full items-center justify-center">
         <AnimatedDock
           items={[
             {
@@ -129,8 +132,8 @@ export default function Home() {
           ]}
           smallClassName="w-full"
         />
-      </div>
-      <button className="ease-in px-4 py-2 text-white border hover:border-2 hover:shadow active:shadow-xl active:bg-blue-900 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button>
+      </div> */}
+      <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ease-in px-4 py-2 font-bold text-white border hover:border-2 hover:shadow active:shadow-xl active:bg-blue-900 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button>
     </div>
   );
 }
