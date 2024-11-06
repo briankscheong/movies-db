@@ -88,52 +88,54 @@ export default function Home() {
   // });
 
   return (
-    <div className="w-screen h-screen text-center pt-20 px-5 items-center justify-center bg-gradient-to-b from-gray-950 to-black">
+    <>
       <Image className="opacity-35" src={Wallpaper} alt="Movies wallpaper" layout="fill" objectFit="cover"></Image>
-      <GibberishText text="Movies.DB" className="text-4xl font-bold text-white font-mono" />
-      <br />
-      <div className="w-full absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-row justify-center items-center">
-          {/* <TypingText className="text-center text-base font-bold font-mono m-8 animate-typing whitespace-nowrap relative border-r-4 border-r-cyan-700"> */}
-          <TypingText 
-              className="select-text text-center text-xl font-bold font-mono m-5"
-              alwaysVisibleCount={1}
-              delay={40}
-              // smooth
-              text="Your one-stop hub for movie info and streaming options."
-              waitTime={3000}
-              grow={true}
-              repeat={false}
-              onComplete={() =>{}}>
-          </TypingText>
+      <div className="w-screen h-screen text-center pt-20 px-5 items-center justify-center bg-gradient-to-b from-gray-950 to-black">
+        <GibberishText text="Movies.DB" className="text-4xl font-bold text-white" /> {/*font-mono */}
+        <br />
+        <div className="w-full absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-row justify-center items-center">
+            {/* <TypingText className="text-center text-base font-bold font-mono m-8 animate-typing whitespace-nowrap relative border-r-4 border-r-cyan-700"> */}
+            <TypingText 
+                className="select-text text-center text-lg font-bold m-5" // font-mono
+                alwaysVisibleCount={1}
+                delay={40}
+                // smooth
+                text="Your one-stop hub for movie info and streaming options."
+                waitTime={3000}
+                grow={true}
+                repeat={false}
+                onComplete={() =>{}}>
+            </TypingText>
+        </div>
+        {/* <div className="flex items-center justify-center">
+          {
+            loading ? <Loading></Loading> : <Expandable className="w-5/6 min-w-72 storybook-fix" list={items} />
+          }
+        </div> */}
+        {/* <div className="relative flex h-40 w-full items-center justify-center">
+          <AnimatedDock
+            items={[
+              {
+                href: '/movies/trending',
+                icon: <IoTrendingUp />,
+                title: 'Trending'
+              },
+              {
+                href: '/movies/popular',
+                icon: <FaHotjar />,
+                title: 'Popular'
+              },
+              {
+                href: '/movies/top-rated',
+                icon: <MdFavoriteBorder />,
+                title: 'Top Rated'
+              },
+            ]}
+            smallClassName="w-full"
+          />
+        </div> */}
+        <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ease-in px-4 py-3 text-white border bg-blue-900/70 hover:bg-blue-950 hover:border-2 hover:font-bold hover:shadow active:shadow-xl active:bg-blue-950 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button>
       </div>
-      {/* <div className="flex items-center justify-center">
-        {
-          loading ? <Loading></Loading> : <Expandable className="w-5/6 min-w-72 storybook-fix" list={items} />
-        }
-      </div> */}
-      {/* <div className="relative flex h-40 w-full items-center justify-center">
-        <AnimatedDock
-          items={[
-            {
-              href: '/movies/trending',
-              icon: <IoTrendingUp />,
-              title: 'Trending'
-            },
-            {
-              href: '/movies/popular',
-              icon: <FaHotjar />,
-              title: 'Popular'
-            },
-            {
-              href: '/movies/top-rated',
-              icon: <MdFavoriteBorder />,
-              title: 'Top Rated'
-            },
-          ]}
-          smallClassName="w-full"
-        />
-      </div> */}
-      <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ease-in px-4 py-2 font-bold text-white border hover:border-2 hover:shadow active:shadow-xl active:bg-gray-800 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button>
-    </div>
+    </>
   );
 }

@@ -181,15 +181,15 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
 
     return (
         <div>
-            {
-                paginated ? (
-                    <div className="flex justify-center items-center text-center mb-6 mt-1">
-                        <Pagination className="items-center justify-center" page={pageNumber ? pageNumber : 1} onChange={handlePagination} showControls boundaries={1} total={totalPage} initialPage={1} variant={"light"} />
-                    </div>
-                ) : <></> 
-            }
             { loading ? <Loading /> :
                 <Suspense fallback={<Loading />}>
+                    {
+                        paginated ? (
+                            <div className="flex justify-center items-center text-center mb-6 mt-1">
+                                <Pagination className="items-center justify-center" page={pageNumber ? pageNumber : 1} onChange={handlePagination} showControls boundaries={1} total={totalPage} initialPage={1} variant={"light"} />
+                            </div>
+                        ) : <></> 
+                    }
                     <div className="columns-sm space-y-4">
                         {
                             movies.map((movie, index) => (
@@ -351,6 +351,13 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                             ))
                         }
                     </div>
+                    {
+                        paginated ? (
+                            <div className="flex justify-center items-center text-center mt-8 mb-2">
+                                <Pagination className="items-center justify-center" page={pageNumber ? pageNumber : 1} onChange={handlePagination} showControls boundaries={1} total={totalPage} initialPage={1} variant={"light"} />
+                            </div>
+                        ) : <></> 
+                    }
                 </Suspense> 
             }
         </div>

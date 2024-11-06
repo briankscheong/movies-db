@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+// import localFont from "next/font/local";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import {Providers} from "./providers";
 import { Viewport } from "next";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const roboto = Roboto({ weight: ["500"], subsets: ['greek'] })
+
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = {
   title: "Movies.DB",
@@ -36,7 +39,8 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-blue-950 to-black text-white bg-fixed`}>
+      {/* <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-blue-950 to-black text-white bg-fixed`}> */}
+      <body className={`${roboto.className} antialiased min-h-screen bg-gradient-to-b from-blue-950 to-black text-white bg-fixed`}>
         {/* min-h-svh */}
         {/* <meta name="theme-color" content="#1e3a8a"/> */}
         <Providers>
