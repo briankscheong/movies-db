@@ -8,7 +8,7 @@ export default function Search({ placeholder, mobile }: { placeholder: string, m
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
-    const maxSearchWidth = mobile ? "max-w-36" : "max-w-52";
+    const maxSearchWidth = mobile ? "max-w-32" : "max-w-52";
     const searchMargin = mobile ? "mx-3" : "mx-6";
     const searchPlaceholder = mobile ? "search..." : placeholder;
     const searchClassName = `${maxSearchWidth} peer block rounded-md border border-transparent hover:border-gray-200 py-[7px] pl-9 pr-4 text-base text-white outline-2 placeholder:text-gray-300 bg-gradient-to-r from-indigo-900 to-blue-900`;
