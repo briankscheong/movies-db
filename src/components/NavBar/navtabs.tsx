@@ -36,7 +36,8 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
   // const query = searchParams?.query || '';
   // const currentPage = Number(searchParams?.page) || 1;
   const pathname = usePathname();
-  const [selected, setSelected] = useState<string>(pathname.split("/")[pathname.split("/").length - 1]);
+  const initialPathname = pathname.split("/")[pathname.split("/").length - 1];
+  const [selected, setSelected] = useState<string>(initialPathname.charAt(0).toUpperCase() + initialPathname.slice(1));
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const router = useRouter();
 
