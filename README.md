@@ -1,8 +1,8 @@
 # Movies.DB
-Movies.DB is a movie database that has the most up-to-date information about trending movies, including streaming options. This is a Next.js application that connects to a Node backend REST API server.
+Movies.DB is a movie database that has the most up-to-date information about trending movies, including streaming options. This is a Next.js application that connects to a Node backend REST API server. Both the frontend and backend servers are deployed on Vercel.
 
 ```
-NOTE: If you are testing this app initially, expect the app to take a minute to function as intended. The backend server that hosts the APIs can take up to a minute to spin up due to auto scale down after a period of inactivity.
+NOTE: The movie search functionality in this application only applies to movies in the existing page due to pagination.  
 ```
 
 
