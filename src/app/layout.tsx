@@ -4,7 +4,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import {Providers} from "./providers";
-// import { Viewport } from "next";
+import { Viewport } from "next";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 
 const roboto = Roboto({ weight: ["500"], subsets: ['greek'] })
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   description: "A site to get the most up-to-date information of movies",
 };
 
-// export const viewport: Viewport = {
-//   viewportFit: "cover",
-// };
+export const viewport: Viewport = {
+  viewportFit: "cover",
+};
 
 export default function RootLayout({
   children,
@@ -36,9 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      {/* <head>
+      <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-      </head> */}
+      </head>
       {/* <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-blue-950 to-black text-white bg-fixed`}> */}
       <body className={`${roboto.className} antialiased min-h-screen bg-gradient-to-b from-blue-950 to-black text-white bg-fixed`}>
         {/* min-h-svh */}
