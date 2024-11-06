@@ -134,7 +134,7 @@ export default function Home() {
             smallClassName="w-full"
           />
         </div> */}
-        <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ease-in px-4 py-3 text-white border bg-blue-900/70 hover:bg-blue-950 hover:border-2 hover:font-bold hover:shadow active:shadow-xl active:bg-blue-950 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button>
+        <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ease-in px-5 py-3 text-white border bg-blue-900/70 hover:bg-blue-950 hover:border-2 hover:font-bold hover:shadow active:shadow-xl active:bg-blue-950 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button>
       </div>
     </>
   );
