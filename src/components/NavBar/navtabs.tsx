@@ -55,7 +55,7 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
   }, []);
 
   return (
-    <div className="overflow-auto flex w-full gap-4 bg-black/50 p-6 items-center scroll-smooth overscroll-contain">
+    <div className="overflow-auto flex w-full gap-4 bg-black/50 p-6 pl-5 items-center scroll-smooth overscroll-contain">
       <div className="flex items-start">
         <button onClick={() => router.push(homeRoute)} className="px-2 shadow-lg">
           <Image
