@@ -354,7 +354,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                     {
                         paginated ? (
                             <div className="flex justify-center items-center text-center mt-8 mb-2">
-                                <Pagination className="items-center justify-center" page={pageNumber ? pageNumber : 1} onChange={handlePagination} showControls boundaries={1} total={totalPage} initialPage={1} variant={"light"} />
+                                <Pagination className="items-center justify-center" page={pageNumber ? pageNumber : 1} onChange={handlePagination} showControls showShadow boundaries={1} total={totalPage} initialPage={1} variant={"light"} />
                             </div>
                         ) : <></> 
                     }
