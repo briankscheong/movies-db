@@ -1,7 +1,7 @@
 "use client"
 import "@/app/globals.css"
 import Image from "next/image";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import Loading from '@/components/loading';
 import { waitSeconds } from '@/lib/utils';
 import { Modal, StyledBackdrop, ModalContent, TriggerButton } from "@/components/modal";
