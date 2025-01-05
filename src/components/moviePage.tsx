@@ -61,7 +61,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
     const [pageNumber, setPageNumber] = useState<number | null>(paginated ? 1 : null);
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const [totalPage, setTotalPage] = useState<number>(1);
-    // const [loading, setLoading] = useState<boolean>(true); 
+    const [loading, setLoading] = useState<boolean>(true); 
     const searchParams = useSearchParams();
     const queryParam = searchParams.get('query');
     const pathname = usePathname();
@@ -144,7 +144,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
     }
 
     useEffect(() => {
-        // setLoading(true);
+        setLoading(true);
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768); 
           };
@@ -166,10 +166,10 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                     result.smaller_poster_path = result.poster_path ? `https://image.tmdb.org/t/p/w154${result.poster_path}` : "";
                 })
                 setMovies(results)
-                // setLoading(false);
+                setLoading(false);
             });
         return () => window.removeEventListener("resize", handleResize);
-    }, [urlPath, pageNumber, totalPage]);
+    }, [urlPath, pageNumber]);
 
     const handleMovieClick = (movie: MovieResult) => {
         getMovieStreamingOption(movie.id, movie.title);
@@ -181,7 +181,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
 
     return (
         <div>
-            {/* { loading ? <Loading /> : */}
+            { loading ? <Loading /> :
                 <Suspense fallback={<Loading />}>
                     {
                         paginated ? (
@@ -359,7 +359,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                         ) : <></> 
                     }
                 </Suspense> 
-            {/* } */}
+            }
         </div>
     );
 }
