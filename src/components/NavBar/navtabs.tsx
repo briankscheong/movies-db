@@ -41,6 +41,8 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const router = useRouter();
 
+  const movieLogoButtonClass = isMobile ? "px-2 shadow-lg" : "px-2 shadow-lg mx-3";
+
   useEffect(() => {
     // const pathArray = pathname.split("/");
     // console.log(pathArray[pathArray.length - 1]);
@@ -57,7 +59,7 @@ export default function NavTabs({tabs, homeRoute }: { tabs: string[], homeRoute:
   return (
     <div className="overflow-auto flex w-full gap-4 bg-black/50 p-6 pl-4 items-center scroll-smooth overscroll-contain">
       <div className="flex items-start">
-        <button onClick={() => router.push(homeRoute)} className="px-2 shadow-lg">
+        <button onClick={() => router.push(homeRoute)} className={movieLogoButtonClass}>
           <Image
             src={movieLogo}
             width={40}
