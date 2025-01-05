@@ -182,7 +182,8 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
     return (
         <div>
             { loading ? <Loading /> :
-                <Suspense fallback={<Loading />}>
+                <>
+                {/* <Suspense fallback={<Loading />}> */}
                     {
                         paginated ? (
                             <div className="flex justify-center items-center text-center mb-6 mt-1">
@@ -358,7 +359,8 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                             </div>
                         ) : <></> 
                     }
-                </Suspense> 
+                {/* </Suspense>  */}
+                </>
             }
         </div>
     );
