@@ -181,7 +181,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
 
     return (
         <div>
-            { loading ? <Loading /> :
+            {/* { loading ? <Loading /> : */}
                 <Suspense fallback={<Loading />}>
                     {
                         paginated ? (
@@ -359,7 +359,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                         ) : <></> 
                     }
                 </Suspense> 
-            }
+            {/* } */}
         </div>
     );
 }
