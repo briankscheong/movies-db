@@ -1,7 +1,7 @@
 "use client"
 import "@/app/globals.css"
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Loading from '@/components/loading';
 import { waitSeconds } from '@/lib/utils';
 import { Modal, StyledBackdrop, ModalContent, TriggerButton } from "@/components/modal";
@@ -182,8 +182,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
     return (
         <div>
             { loading ? <Loading /> :
-                <>
-                {/* <Suspense fallback={<Loading />}> */}
+                <Suspense fallback={<Loading />}>
                     {
                         paginated ? (
                             <div className="flex justify-center items-center text-center mb-6 mt-1">
@@ -359,8 +358,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
                             </div>
                         ) : <></> 
                     }
-                {/* </Suspense>  */}
-                </>
+                </Suspense> 
             }
         </div>
     );

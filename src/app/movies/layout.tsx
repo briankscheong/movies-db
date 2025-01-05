@@ -1,6 +1,7 @@
-import React, { Suspense } from 'react';
+import React from 'react';
+// import { Suspense } from 'react';
 import NavTabs from '@/components/NavBar/navtabs';
-import Loading from '@/components/loading';
+// import Loading from '@/components/loading';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const tabs = ["Trending", "Popular", "Top Rated", "Upcoming"]
@@ -12,9 +13,9 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
           {/* </Suspense> */}
         </div>
         <main className="flex-grow p-4 text-white select-text">
-          <Suspense fallback={<Loading />}>
+          {/* <Suspense fallback={<Loading />}> */}
             {children}
-          </Suspense>
+          {/* </Suspense> */}
         </main>
     </div>
   );
