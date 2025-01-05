@@ -3,9 +3,10 @@ Movies.DB is a movie database that has the most up-to-date information about tre
 
 ```
 NOTES: 
-The movie search functionality in this application only applies to movies in the existing page due to pagination.
 
-Due to the rate limit of 100 daily API calls to the streaming availability service, the application only supports providing streaming availability information for 100 unique movies daily.
+- The movie search functionality in Movies.DB is local and only applies to movies in the existing page due to pagination.
+
+- Due to the rate limit of 100 daily API calls to the streaming availability service, Movies.DB only supports providing streaming availability information for 100 unique movies daily.
 ```
 
 Check out Movies.DB [here](https://movie-db-phi-peach.vercel.app)!
