@@ -71,7 +71,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
 
     async function getMovieStreamingOption(id: number, title: string) {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movie/${id}/streaming-options`)
+            const res = await fetch(`${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movies/${id}/streaming-options`)
             if (!res.ok) {
                 console.error(`Failed to retrieve streaming option for movie ${title}`);
             }
@@ -113,7 +113,7 @@ export default function MoviePage({urlPath, paginated}: {urlPath: string, pagina
     async function getMovieVideo(id: number) {
         let movieVideoKey: string = "";
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movie/${id}/video`);
+            const res = await fetch(`${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movies/${id}/video`);
             if (!res.ok) {
                 console.error(`Failed to retrieve streaming option for movie id ${id}`);
             }
