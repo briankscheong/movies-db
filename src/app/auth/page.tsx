@@ -1,17 +1,18 @@
 "use client"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa";
-import { FaMicrosoft } from "react-icons/fa";
-// import { useRouter } from 'next/router';
+// import { FaMicrosoft } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
+import { getCookie, getCookies, setCookie, deleteCookie, hasCookie } from 'cookies-next';
 import "@/app/globals.css";
+import credentials from 'next-auth/providers/credentials';
+import { Cookie } from 'lucide-react';
 
 const Auth: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
@@ -21,16 +22,12 @@ const Auth: React.FC = () => {
       setError('Username is required');
       return false;
     }
-    if (!email) {
-      setError('Email is required');
-      return false;
-    }
     if (!password) {
       setError('Password is required');
       return false;
     }
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
+    if (password.length < 8) {
+      setError('Password must be at least 8 characters long');
       return false;
     }
     setError('');
@@ -40,51 +37,63 @@ const Auth: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
-    router.push('/dashboard')
+    const url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL + `/auth/${isSignUp ? "signup" : "login"}`; 
 
-    // Handle sign-up or sign-in logic here
+    const options = {
+      method: 'POST',
+      credentials: 'include' as RequestCredentials,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({username: username, password: password}),
+    };
+    try {
+      const response = await fetch(url, options);
+      const json = await response.json();
+      if (!response.ok) {
+        setError(json.error);
+      }
+      else {
+        setCookie("accessToken", `${json.access_token}`, {
+          httpOnly: false, // should be true
+          maxAge: 24 * 60 * 60,
+          sameSite: "strict",
+        });
+        setCookie("refreshToken", `${json.refresh_token}`, {
+          httpOnly: false, // should be true
+          maxAge: 24 * 60 * 60,
+          sameSite: "strict",
+        });
+        // router.push('/movies/trending');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800 font-mono">
-          {/* {isSignUp ? 'Sign Up' : 'Sign In'} */}
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="w-full max-w-md p-8 space-y-6 bg-slate-900 rounded shadow-md">
+        <h2 className="text-2xl font-bold text-center text-white font-mono">
           Movies.DB
         </h2>
         <form className="space-y-4" onSubmit={handleSubmit} noValidate>
-          {isSignUp && (
-            <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                Username
-              </label>
-              <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                aria-required="true"
-                className="w-full px-3 py-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200"
-              />
-            </div>
-          )}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
+            <label htmlFor="username" className="block text-sm font-medium text-white">
+              Username
             </label>
             <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
               aria-required="true"
-              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200"
+              className="bg-white text-black w-full px-3 py-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-800"
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-sm font-medium text-white">
               Password
             </label>
             <input
@@ -94,13 +103,13 @@ const Auth: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
               aria-required="true"
-              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200"
+              className="bg-white text-black w-full px-3 py-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-800"
             />
           </div>
           {error && <p className="text-sm text-red-600">{error}</p>}
           <button
             type="submit"
-            className="w-full px-4 py-2 font-medium text-white bg-cyan-600 rounded hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 font-medium text-white bg-cyan-700 rounded hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
           >
             {isSignUp ? 'Sign Up' : 'Sign In'}
           </button>
@@ -108,27 +117,27 @@ const Auth: React.FC = () => {
         <div className="flex items-center justify-center mt-6 space-x-4">
           <button
             onClick={() => signIn('apple')}
-            className="text-gray-700 hover:text-gray-900 focus:outline-none"
+            className="text-white hover:text-gray-400 focus:outline-none"
             aria-label="Sign in with Microsoft"
           >
             <FaApple size={30} />
           </button>
           <button
             onClick={() => signIn('google')}
-            className="text-gray-700 hover:text-gray-900 focus:outline-none"
+            className="text-white hover:text-gray-400 focus:outline-none"
             aria-label="Sign in with Google"
           >
             <FcGoogle size={30} />
           </button>
-          <button
+          {/* <button
             onClick={() => signIn('microsoft')}
-            className="text-gray-700 hover:text-gray-900 focus:outline-none"
+            className="text-white hover:text-gray-400 focus:outline-none"
             aria-label="Sign in with Microsoft"
           >
             <FaMicrosoft size={30} />
-          </button>
+          </button> */}
         </div>
-        <p className="mt-4 text-center text-gray-600 text-sm">
+        <p className="mt-4 text-center text-white text-sm">
           {isSignUp
             ? 'Already have an account? '
             : "Don't have an account? "}

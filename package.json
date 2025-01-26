@@ -17,6 +17,7 @@
     "@mui/system": "^6.1.2",
     "@nextui-org/react": "^2.4.8",
     "@splinetool/react-spline": "^4.0.0",
+    "cookies-next": "^4.3.0",
     "framer-motion": "^11.11.10",
     "lucide-react": "^0.454.0",
     "next": "14.2.13",
