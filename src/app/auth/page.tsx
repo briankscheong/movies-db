@@ -1,14 +1,12 @@
 "use client"
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa";
 // import { FaMicrosoft } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
-import { getCookie, getCookies, setCookie, deleteCookie, hasCookie } from 'cookies-next';
+import { setCookie } from 'cookies-next';
 import "@/app/globals.css";
-import credentials from 'next-auth/providers/credentials';
-import { Cookie } from 'lucide-react';
 
 const Auth: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -64,7 +62,7 @@ const Auth: React.FC = () => {
           maxAge: 24 * 60 * 60,
           sameSite: "strict",
         });
-        // router.push('/movies/trending');
+        router.push('/movies/trending');
       }
     } catch (error) {
       console.error(error);
