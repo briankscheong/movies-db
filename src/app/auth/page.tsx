@@ -5,7 +5,8 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa";
 // import { FaMicrosoft } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
-import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+// import { deleteCookie, getCookie } from 'cookies-next';
+import { setCookie } from 'cookies-next';
 import "@/app/globals.css";
 
 const Auth: React.FC = () => {
@@ -65,7 +66,6 @@ const Auth: React.FC = () => {
           secure: process.env.NODE_ENV === "production",
         });
         // deleteCookie("accessToken");
-        // deleteCookie("foo");
         // deleteCookie("refreshToken");
         // router.push('/movies/trending');
       }
