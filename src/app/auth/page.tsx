@@ -5,7 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa";
 // import { FaMicrosoft } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
-import { setCookie } from 'cookies-next';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import "@/app/globals.css";
 
 const Auth: React.FC = () => {
@@ -53,16 +53,21 @@ const Auth: React.FC = () => {
       }
       else {
         setCookie("accessToken", `${json.access_token}`, {
-          httpOnly: false, // should be true
+          httpOnly: false,
           maxAge: 24 * 60 * 60,
-          sameSite: "strict",
+          sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+          secure: process.env.NODE_ENV === "production",
         });
         setCookie("refreshToken", `${json.refresh_token}`, {
-          httpOnly: false, // should be true
+          httpOnly: false, 
           maxAge: 24 * 60 * 60,
-          sameSite: "strict",
+          sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+          secure: process.env.NODE_ENV === "production",
         });
-        router.push('/movies/trending');
+        // deleteCookie("accessToken");
+        // deleteCookie("foo");
+        // deleteCookie("refreshToken");
+        // router.push('/movies/trending');
       }
     } catch (error) {
       console.error(error);

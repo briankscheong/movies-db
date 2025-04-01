@@ -1,91 +1,14 @@
 "use client"
 
-// import Auth from "@/pages/auth";
 import "@/app/globals.css";
 import GibberishText from "@/components/gibberish-text";
 import TypingText from "@/components/typing-text";
-// import Expandable from "@/components/animata/carousel/expandable";
-// import { useEffect, useState } from "react";
-// import Loading from "@/components/loading";
-// import AnimatedDock from "@/components/animata/container/animated-dock";
-// import { IoTrendingUp } from "react-icons/io5";
-// import { FaHotjar } from "react-icons/fa";
-// import { MdFavoriteBorder } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import Wallpaper from "@/public/images/wallpaper.jpg"
 
-/**
- * import Marquee from "@/components/animata/container/marquee";
- * import { IoSearch, IoHomeOutline } from "react-icons/io5";
- * import { IoMdNotificationsOutline } from "react-icons/io";
- * import { CgProfile } from "react-icons/cg";
- */
-
-
-// interface ItemProps {
-//   image: string,
-//   title: string
-// }
-
-// interface MovieProps {
-//   adult: boolean,
-//   backdrop_path: string,
-//   genre_ids: number[],
-//   id: number,
-//   original_language: string,
-//   original_title: string,
-//   overview: string,
-//   popularity: number[],
-//   poster_path: string,
-//   release_date: string,
-//   title: string,
-//   video: boolean,
-//   vote_average: number,
-//   vote_count: number
-// }
-
 export default function Home() {
   const router = useRouter();
-  // const [movies, setMovies] = useState<MovieProps[]>([]);
-  // const [items, setItems] = useState<ItemProps[]>([]);
-  // const [loading, setLoading] = useState<boolean>(true);
-
-  // async function getMovies() {
-  //   const backend_url = process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL;
-  //   try {
-  //       const fullUrl = `${backend_url}/movies/popular?page=1`;
-  //       const res = await fetch(fullUrl);
-  //       if (!res.ok) {
-  //           console.error("Failed to retrieve movies");
-  //           return [];
-  //       }
-  //       const moviesResult = await res.json();
-  //       return moviesResult.results.slice(0, 6);
-  //   }
-  //   catch (e){
-  //       console.error("Error fetching movie: ", e);
-  //       return [];
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getMovies()
-  //     .then(moviesResult => {
-  //       setMovies(moviesResult);
-  //     })
-  //     .then(() => {
-  //       const items: ItemProps[] = movies.map(movie => ({
-  //         image: `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`,
-  //         title: movie.title
-  //       }));
-  //       setItems(items);
-  //       setLoading(false);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     })
-  // });
 
   return (
     <>
@@ -107,34 +30,6 @@ export default function Home() {
                 onComplete={() =>{}}>
             </TypingText>
         </div>
-        {/* <div className="flex items-center justify-center">
-          {
-            loading ? <Loading></Loading> : <Expandable className="w-5/6 min-w-72 storybook-fix" list={items} />
-          }
-        </div> */}
-        {/* <div className="relative flex h-40 w-full items-center justify-center">
-          <AnimatedDock
-            items={[
-              {
-                href: '/movies/trending',
-                icon: <IoTrendingUp />,
-                title: 'Trending'
-              },
-              {
-                href: '/movies/popular',
-                icon: <FaHotjar />,
-                title: 'Popular'
-              },
-              {
-                href: '/movies/top-rated',
-                icon: <MdFavoriteBorder />,
-                title: 'Top Rated'
-              },
-            ]}
-            smallClassName="w-full"
-          />
-        </div> */}
-        {/* <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ease-in px-5 py-3 text-white border bg-blue-900/70 hover:bg-blue-950 hover:border-2 hover:shadow active:shadow-xl active:bg-blue-950 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get Started</button> */}
         <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ease-in px-7 py-3 text-white bg-gradient-to-r from-indigo-700 to-blue-700 hover:bg-gradient-to-r hover:from-indigo-800 hover:to-blue-800 shadow active:shadow-xl active:bg-gradient-to-r active:from-indigo-900 active:to-blue-900 rounded-lg text-sm" type="button" onClick={() => router.push('/movies/trending')}>Get started</button>
       </div>
     </>
