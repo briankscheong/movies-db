@@ -67,7 +67,7 @@ const Auth: React.FC = () => {
         });
         // deleteCookie("accessToken");
         // deleteCookie("refreshToken");
-        // router.push('/movies/trending');
+        router.push('/movies/trending');
       }
     } catch (error) {
       console.error(error);
